@@ -43,7 +43,7 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
   ];
 
   return (
-    <BoxContainer>
+    <BoxContainer className="p-6">
       <ActionPlanItemHeader
         title={title}
         icon={icon}
@@ -53,7 +53,7 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
 
       <div className={`viewport ${isDropdownOpen ? "open" : ""}`}>
         <div
-          className={`mt-6 content ${isDropdownOpen ? "open" : ""}`}
+          className={`mt-3 content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
           <DataTable data={rows} columns={columns} />
