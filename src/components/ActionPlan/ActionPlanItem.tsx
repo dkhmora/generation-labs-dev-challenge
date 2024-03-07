@@ -22,14 +22,24 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
 
   // Sample rows data
   const rows = [
-    { id: 1, name: "Frozen yoghurt", calories: 159 },
-    { id: 2, name: "Ice cream sandwich", calories: 237 },
-    { id: 3, name: "Eclair", calories: 262 },
+    {
+      id: 1,
+      system: "Respiratory System",
+      intervention: "Q10",
+      dosage: "500mg",
+      frequency: "Everyday",
+      notes: true,
+      delete: true,
+    },
   ];
 
   const columns = [
-    { id: "name", label: "Dessert (100g serving)" },
-    { id: "calories", label: "Calories", props: { align: "right" } },
+    { id: "system", label: "System" },
+    { id: "intervention", label: "Calories" },
+    { id: "dosage", label: "Dosage" },
+    { id: "frequency", label: "Frequency" },
+    { id: "notes", label: "Notes" },
+    { id: "delete", label: "" },
   ];
 
   return (

@@ -8,7 +8,6 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 
 type DataTableProps = {
   data: any[];
@@ -35,10 +34,16 @@ export default function DataTable(dataTableProps: DataTableProps) {
         <TableBody>
           {data.map((row) => (
             <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
+              {Object.keys(row).map((key) => {
+                if (key !== "id") {
+                  return (
+                    <TableCell key={key} component="th" scope="row">
+                      {row[key]}
+                    </TableCell>
+                  );
+                }
+                return null;
+              })}
             </TableRow>
           ))}
         </TableBody>
