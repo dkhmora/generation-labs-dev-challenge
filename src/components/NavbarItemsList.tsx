@@ -18,14 +18,13 @@ export default function NavbarItemsList({
   };
 
   return (
-    <List sx={sx}>
+    <List sx={{ display: "flex", ...sx }}>
       {items.map((text) => (
         <ListItemButton
           key={text}
           selected={selectedItem === text}
           onClick={() => handleListItemClick(text)}
           sx={{
-            borderBottom: selectedItem === text ? "2px solid #3D3D3D" : "none",
             bgcolor: selectedItem === text ? "#000" : "transparent",
             "&.Mui-selected": {
               bgcolor: "rgba(147, 133, 98, 0.2)",
@@ -37,20 +36,40 @@ export default function NavbarItemsList({
             "&:hover": {
               bgcolor: "rgba(147, 133, 98, 0.1)",
             },
+            height: "auto",
             paddingTop: "24px",
             paddingBottom: "24px",
             "@media (min-width:1024px)": {
+              height: "80px",
               paddingTop: "16px",
               paddingBottom: "16px",
             },
+            position: "relative",
           }}
         >
           <ListItemText
-            primary={text}
+            primary={
+              <div
+                style={{
+                  borderBottom:
+                    selectedItem === text ? "2px solid #1F1F1F" : "none",
+                  display: "inline-flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  paddingBottom: "26px",
+                  marginTop: "26px",
+                }}
+              >
+                {text}
+              </div>
+            }
             primaryTypographyProps={{
               sx: {
-                fontWeight: selectedItem === text ? "bold" : "normal",
-                color: selectedItem === text ? "#3D3D3D" : "#666666",
+                fontWeight: selectedItem === text ? "600" : "400",
+                fontSize: "16px",
+                color: selectedItem === text ? "#1F1F1F" : "#8C8C8C",
+                display: "inline",
+                textAlign: "center",
               },
             }}
           />

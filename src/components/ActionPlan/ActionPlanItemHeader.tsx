@@ -23,7 +23,7 @@ export default function ActionPlanItemHeader(
       <div className="flex flex-row justify-center items-center text-center space-x-4">
         {icon}
 
-        <h5 className="font-medium text-lg">{title}</h5>
+        <h5 className="font-semibold text-base">{title}</h5>
       </div>
 
       <div className="flex flex-row justify-center items-center text-center space-x-2">

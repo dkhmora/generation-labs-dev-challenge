@@ -30,7 +30,7 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
   return (
     <section className="w-full">
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold">Action plan for {userName}</h2>
+        <h2 className="text-2xl font-semibold">Action plan for {userName}</h2>
 
         <div className="space-y-4">
           {MOCK_ACTION_PLAN_ITEMS.map((actionPlanItem, index) => (

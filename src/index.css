@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  color: #1f1f1f;
+}
+
 .viewport {
   overflow: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease;
