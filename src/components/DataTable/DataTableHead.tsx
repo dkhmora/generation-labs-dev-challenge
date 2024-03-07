@@ -8,8 +8,14 @@ export default function DataTableHead(dataTableHeadProps: { columns: any[] }) {
     <TableHead>
       <TableRow>
         {columns.map((column) => (
-          <TableCell key={column.id} {...column.props}>
-            {column.label}
+          <TableCell
+            key={column.id}
+            sx={{ borderBottom: "none" }}
+            {...column.props}
+          >
+            <h5 className="text-sm font-medium font-[#8C8C8C]">
+              {column.label}
+            </h5>
           </TableCell>
         ))}
       </TableRow>

@@ -11,7 +11,12 @@ export default function DataTableBody(dataTableBodyProps: { data: any[] }) {
           {Object.keys(row).map((key) => {
             if (key !== "id") {
               return (
-                <TableCell key={key} component="th" scope="row">
+                <TableCell
+                  key={key}
+                  component="th"
+                  scope="row"
+                  sx={{ borderBottom: "none" }}
+                >
                   {row[key]}
                 </TableCell>
               );
