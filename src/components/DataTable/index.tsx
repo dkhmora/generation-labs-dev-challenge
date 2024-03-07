@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@mui/material";
+import { Table, TableContainer, Paper } from "@mui/material";
+import DataTableBody from "./DataTableBody";
+import DataTableHead from "./DataTableHead";
 
 type DataTableProps = {
   data: any[];
@@ -22,31 +16,9 @@ export default function DataTable(dataTableProps: DataTableProps) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            {columns.map((column) => (
-              <TableCell key={column.id} {...column.props}>
-                {column.label}
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row) => (
-            <TableRow key={row.id}>
-              {Object.keys(row).map((key) => {
-                if (key !== "id") {
-                  return (
-                    <TableCell key={key} component="th" scope="row">
-                      {row[key]}
-                    </TableCell>
-                  );
-                }
-                return null;
-              })}
-            </TableRow>
-          ))}
-        </TableBody>
+        <DataTableHead columns={columns} />
+
+        <DataTableBody data={data} />
       </Table>
     </TableContainer>
   );
