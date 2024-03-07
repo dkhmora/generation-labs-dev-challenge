@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ActionPlanItemHeader from "./ActionPlanItemHeader";
 import BoxContainer from "../BoxContainer";
+import DataTable from "../DataTable";
 
 type ActionPlanItemProps = {
   title: string;
@@ -19,6 +20,13 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
     }, 500);
   }, []);
 
+  // Sample rows data
+  const rows = [
+    { id: 1, name: "Frozen yoghurt", calories: 159 },
+    { id: 2, name: "Ice cream sandwich", calories: 237 },
+    { id: 3, name: "Eclair", calories: 262 },
+  ];
+
   return (
     <BoxContainer>
       <ActionPlanItemHeader
@@ -32,7 +40,9 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
         <div
           className={`content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
-        ></div>
+        >
+          <DataTable data={rows} />
+        </div>
       </div>
     </BoxContainer>
   );
