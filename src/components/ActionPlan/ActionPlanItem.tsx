@@ -27,6 +27,11 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
     { id: 3, name: "Eclair", calories: 262 },
   ];
 
+  const columns = [
+    { id: "name", label: "Dessert (100g serving)" },
+    { id: "calories", label: "Calories", props: { align: "right" } },
+  ];
+
   return (
     <BoxContainer>
       <ActionPlanItemHeader
@@ -41,7 +46,7 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
           className={`content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
-          <DataTable data={rows} />
+          <DataTable data={rows} columns={columns} />
         </div>
       </div>
     </BoxContainer>
