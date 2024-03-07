@@ -53,7 +53,7 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
 
       <div className={`viewport ${isDropdownOpen ? "open" : ""}`}>
         <div
-          className={`content ${isDropdownOpen ? "open" : ""}`}
+          className={`mt-6 content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
           <DataTable data={rows} columns={columns} />
