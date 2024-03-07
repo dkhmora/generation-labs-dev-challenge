@@ -1,7 +1,12 @@
 import "./App.css";
+import AppBar from "./components/AppBar";
 
 function App() {
-  return <main></main>;
+  return (
+    <main>
+      <AppBar />
+    </main>
+  );
 }
 
 export default App;
