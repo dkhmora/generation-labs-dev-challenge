@@ -42,6 +42,15 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
     { id: "delete", label: "" },
   ];
 
+  const columnFieldTypes = {
+    system: "select",
+    intervention: "select",
+    dosage: "select",
+    frequency: "select",
+    notes: "button/notes",
+    delete: "button/delete",
+  };
+
   return (
     <BoxContainer className="p-6">
       <ActionPlanItemHeader
@@ -56,7 +65,11 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
           className={`mt-3 content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
-          <DataTable data={rows} columns={columns} />
+          <DataTable
+            data={rows}
+            columns={columns}
+            columnFieldTypes={columnFieldTypes}
+          />
         </div>
       </div>
     </BoxContainer>
