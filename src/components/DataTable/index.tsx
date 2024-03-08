@@ -2,10 +2,10 @@ import React from "react";
 import { Table, TableContainer, Paper } from "@mui/material";
 import DataTableBody from "./DataTableBody";
 import DataTableHead from "./DataTableHead";
-import { Columns } from "../../types";
+import { Columns, Rows } from "../../types";
 
 type DataTableProps = {
-  data: any[];
+  data: Rows[];
   columns: Columns;
   loading?: boolean;
   onRowClick?: (row: any) => void;

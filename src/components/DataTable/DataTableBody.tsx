@@ -1,10 +1,10 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import React from "react";
 import CustomSelect from "../CustomSelect";
-import { Columns } from "../../types";
+import { Columns, Rows } from "../../types";
 
 type dataTableBodyPropsType = {
-  data: any[];
+  data: Rows[];
   columns: Columns;
 };
 
@@ -31,7 +31,7 @@ export default function DataTableBody(
                       placeHolder={columns[key as keyof Columns].label}
                     />
                   ) : (
-                    row[key]
+                    row[key as keyof Rows]
                   )}
                 </TableCell>
               );

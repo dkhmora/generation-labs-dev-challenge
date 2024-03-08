@@ -8,3 +8,13 @@ export type Columns = {
   notes: { fieldType: FieldTypes; label: string };
   delete: { fieldType: FieldTypes; label: string };
 };
+
+export type Rows = {
+  id: number;
+  system: string;
+  intervention: string;
+  dosage: string;
+  frequency: string;
+  notes: boolean;
+  delete: boolean;
+};

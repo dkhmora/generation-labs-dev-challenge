@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ActionPlanItemHeader from "./ActionPlanItemHeader";
 import BoxContainer from "../BoxContainer";
 import DataTable from "../DataTable";
-import { Columns } from "../../types";
+import { Columns, Rows } from "../../types";
 
 type ActionPlanItemProps = {
   title: string;
@@ -22,7 +22,7 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
   }, []);
 
   // Sample rows data
-  const rows = [
+  const rows: Rows[] = [
     {
       id: 1,
       system: "Respiratory System",
