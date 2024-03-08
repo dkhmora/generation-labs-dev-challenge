@@ -1,7 +1,7 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import React from "react";
 import CustomSelect from "../CustomSelect";
-import { Columns, Rows } from "../../types";
+import { Columns, Rows, SelectColumn } from "../../types";
 
 type dataTableBodyPropsType = {
   data: Rows[];
@@ -19,6 +19,7 @@ export default function DataTableBody(
         <TableRow key={row.id}>
           {Object.keys(row).map((key: string) => {
             if (key !== "id") {
+              const { fieldType, label } = columns[key as keyof Columns];
               return (
                 <TableCell
                   key={key}
@@ -26,9 +27,12 @@ export default function DataTableBody(
                   scope="row"
                   sx={{ borderBottom: "none" }}
                 >
-                  {columns[key as keyof Columns].fieldType === "select" ? (
+                  {fieldType === "select" ? (
                     <CustomSelect
-                      placeHolder={columns[key as keyof Columns].label}
+                      placeHolder={label}
+                      items={
+                        (columns[key as keyof Columns] as SelectColumn).items
+                      }
                     />
                   ) : (
                     row[key as keyof Rows]

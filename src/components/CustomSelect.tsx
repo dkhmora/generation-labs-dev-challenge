@@ -4,6 +4,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { CustomSelectItem } from "../types";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -39,13 +40,14 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
 }
 
 type customSelectPropsType = {
-  value: string[];
+  value: CustomSelectItem;
+  items: CustomSelectItem[];
   placeHolder: string;
   onChange: (event: SelectChangeEvent) => void;
 };
 
 export default function CustomSelect(customSelectProps: customSelectPropsType) {
-  const { value, placeHolder, onChange } = customSelectProps;
+  const { value, items, placeHolder, onChange } = customSelectProps;
   const theme = useTheme();
   const [personName, setPersonName] = React.useState<string[]>([]);
 
@@ -77,16 +79,9 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
         >
-          <MenuItem disabled value="">
-            <em>Placeholder</em>
-          </MenuItem>
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
-            >
-              {name}
+          {items.map(({ value, color, tooltipText }) => (
+            <MenuItem key={value} value={value}>
+              {value}
             </MenuItem>
           ))}
         </Select>

@@ -3,6 +3,7 @@ import ActionPlanItemHeader from "./ActionPlanItemHeader";
 import BoxContainer from "../BoxContainer";
 import DataTable from "../DataTable";
 import { Columns, Rows } from "../../types";
+import { selectItems } from "../../constants";
 
 type ActionPlanItemProps = {
   title: string;
@@ -35,10 +36,18 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
   ];
 
   const columns: Columns = {
-    system: { fieldType: "select", label: "System" },
-    intervention: { fieldType: "select", label: "Calories" },
-    dosage: { fieldType: "select", label: "Dosage" },
-    frequency: { fieldType: "select", label: "Frequency" },
+    system: { fieldType: "select", label: "System", items: selectItems.system },
+    intervention: {
+      fieldType: "select",
+      label: "Calories",
+      items: selectItems.intervention,
+    },
+    dosage: { fieldType: "select", label: "Dosage", items: selectItems.dosage },
+    frequency: {
+      fieldType: "select",
+      label: "Frequency",
+      items: selectItems.frequency,
+    },
     notes: { fieldType: "button/notes", label: "Notes" },
     delete: { fieldType: "button/delete", label: "" },
   };
