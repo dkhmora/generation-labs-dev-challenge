@@ -5,6 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { CustomSelectItem } from "../types";
 import { FilledInput } from "@mui/material";
+import styled from "@mui/material/styles/styled";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -17,14 +18,18 @@ const MenuProps = {
   },
 };
 
-function getStyles(name: string, personName: readonly string[], theme: Theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
+const CustomFilledInput = styled(FilledInput)(() => ({
+  "& .MuiFilledInput-input": {
+    paddingTop: 6,
+    paddingBottom: 6,
+  },
+  "& .MuiFilledInput-underline:before": {
+    display: "none",
+  },
+  "& .MuiFilledInput-underline:after": {
+    display: "none",
+  },
+}));
 
 type customSelectPropsType = {
   value: string;
@@ -38,15 +43,21 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
 
   return (
     <div>
-      <FormControl sx={{}}>
+      <FormControl>
         <Select
           displayEmpty
           value={value}
           onChange={onChange}
-          input={<FilledInput />}
+          input={<CustomFilledInput disableUnderline />}
           placeholder={placeHolder}
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
+          sx={{
+            borderRadius: 2,
+            "&:focus": {
+              borderRadius: 2,
+            },
+          }}
         >
           {items.map((item) => (
             <MenuItem key={item.value} value={item.value}>
