@@ -1,8 +1,18 @@
 export type FieldTypes = "select" | "button/notes" | "button/delete";
+export type SelectColumnLabel =
+  | "System"
+  | "Intervention"
+  | "Dosage"
+  | "Frequency";
+export type SelectColumnKeys =
+  | "system"
+  | "intervention"
+  | "dosage"
+  | "frequency";
 
 export type SelectColumn = {
   fieldType: FieldTypes;
-  label: string;
+  label: SelectColumnLabel;
   items: CustomSelectItem[];
 };
 
@@ -27,7 +37,8 @@ export type Rows = {
 
 export type CustomSelectItem = {
   value: string;
-  color: string;
+  color?: string;
+  textColor?: string;
   tooltipText: string;
 };
 

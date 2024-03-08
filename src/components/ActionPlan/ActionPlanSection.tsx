@@ -26,7 +26,7 @@ function ActionPlanSection({ title, icon }: ActionPlanSectionProps) {
   const rows: Rows[] = [
     {
       id: 1,
-      system: "Respiratory System",
+      system: "Respiratory system",
       intervention: "Q10",
       dosage: "500mg",
       frequency: "Everyday",
@@ -39,7 +39,7 @@ function ActionPlanSection({ title, icon }: ActionPlanSectionProps) {
     system: { fieldType: "select", label: "System", items: selectItems.system },
     intervention: {
       fieldType: "select",
-      label: "Calories",
+      label: "Intervention",
       items: selectItems.intervention,
     },
     dosage: { fieldType: "select", label: "Dosage", items: selectItems.dosage },

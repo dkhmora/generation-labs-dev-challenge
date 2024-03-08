@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { CustomSelectItem } from "../types";
+import { FilledInput } from "@mui/material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -40,7 +41,7 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
 }
 
 type customSelectPropsType = {
-  value: CustomSelectItem;
+  value: string;
   items: CustomSelectItem[];
   placeHolder: string;
   onChange: (event: SelectChangeEvent) => void;
@@ -48,34 +49,18 @@ type customSelectPropsType = {
 
 export default function CustomSelect(customSelectProps: customSelectPropsType) {
   const { value, items, placeHolder, onChange } = customSelectProps;
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
+  console.log(value);
 
   return (
     <div>
       <FormControl sx={{}}>
         <Select
           displayEmpty
-          value={personName}
-          onChange={handleChange}
-          input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em>{placeHolder}</em>;
-            }
-
-            return selected.join(", ");
-          }}
+          value={value}
+          onChange={onChange}
+          input={<FilledInput />}
+          placeholder={placeHolder}
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
         >

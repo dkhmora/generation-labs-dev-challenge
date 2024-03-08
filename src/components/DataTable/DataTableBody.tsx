@@ -1,7 +1,7 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import React from "react";
 import CustomSelect from "../CustomSelect";
-import { Columns, Rows, SelectColumn } from "../../types";
+import { Columns, Rows, SelectColumn, SelectColumnKeys } from "../../types";
 
 type dataTableBodyPropsType = {
   data: Rows[];
@@ -33,6 +33,7 @@ export default function DataTableBody(
                       items={
                         (columns[key as keyof Columns] as SelectColumn).items
                       }
+                      value={row[key as keyof Rows] as SelectColumnKeys}
                     />
                   ) : (
                     row[key as keyof Rows]
