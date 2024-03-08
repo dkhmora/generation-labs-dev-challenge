@@ -22,6 +22,8 @@ const CustomFilledInput = styled(FilledInput)(() => ({
   "& .MuiFilledInput-input": {
     paddingTop: 6,
     paddingBottom: 6,
+    fontSize: "14px",
+    fontWeight: 400,
   },
   "& .MuiFilledInput-underline:before": {
     display: "none",
@@ -40,6 +42,10 @@ type customSelectPropsType = {
 
 export default function CustomSelect(customSelectProps: customSelectPropsType) {
   const { value, items, placeHolder, onChange } = customSelectProps;
+  const { color, textColor } = items.find((item) => item.value === value) || {
+    color: null,
+    textColor: null,
+  };
 
   return (
     <div>
@@ -48,7 +54,15 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
           displayEmpty
           value={value}
           onChange={onChange}
-          input={<CustomFilledInput disableUnderline />}
+          input={
+            <CustomFilledInput
+              disableUnderline
+              style={{
+                backgroundColor: color ? color : "",
+                color: textColor ? textColor : "",
+              }}
+            />
+          }
           placeholder={placeHolder}
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
