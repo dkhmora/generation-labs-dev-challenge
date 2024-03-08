@@ -79,9 +79,9 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
         >
-          {items.map(({ value, color, tooltipText }) => (
-            <MenuItem key={value} value={value}>
-              {value}
+          {items.map((item) => (
+            <MenuItem key={item.value} value={item.value}>
+              {item.value}
             </MenuItem>
           ))}
         </Select>

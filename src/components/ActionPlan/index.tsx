@@ -3,9 +3,9 @@ import FootprintIcon from "../../assets/footprint.svg";
 import PillIcon from "../../assets/pill.svg";
 import SpaIcon from "../../assets/spa.svg";
 import CircleImageIcon from "../CircleImageIcon";
-import ActionPlanItem from "./ActionPlanItem";
+import ActionPlanSection from "./ActionPlanSection";
 
-const MOCK_ACTION_PLAN_ITEMS = [
+const MOCK_ACTION_PLAN_SECTIONS = [
   {
     title: "Nutrition & Supplement Intervention",
     icon: <CircleImageIcon icon={MedicationIcon} className="bg-[#E99774]" />,
@@ -33,10 +33,10 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
         <h2 className="text-2xl font-semibold">Action plan for {userName}</h2>
 
         <div className="space-y-4">
-          {MOCK_ACTION_PLAN_ITEMS.map((actionPlanItem, index) => (
-            <ActionPlanItem
-              key={`${actionPlanItem.title}-${index}`}
-              {...actionPlanItem}
+          {MOCK_ACTION_PLAN_SECTIONS.map((actionPlanSection, index) => (
+            <ActionPlanSection
+              key={`${actionPlanSection.title}-${index}`}
+              {...actionPlanSection}
             />
           ))}
         </div>

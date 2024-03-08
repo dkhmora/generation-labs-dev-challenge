@@ -5,18 +5,18 @@ import {
   KeyboardArrowRight as KeyboardArrowRightIcon,
 } from "@mui/icons-material";
 
-type ActionPlanItemHeaderProps = {
+type ActionPlanSectionHeaderProps = {
   title: string;
   icon: ReactNode;
   onDropdownToggle: () => void;
   isDropdownOpen: boolean;
 };
 
-export default function ActionPlanItemHeader(
-  ActionPlanItemHeaderProps: ActionPlanItemHeaderProps
+export default function ActionPlanSectionHeader(
+  ActionPlanSectionHeaderProps: ActionPlanSectionHeaderProps
 ) {
   const { title, icon, onDropdownToggle, isDropdownOpen } =
-    ActionPlanItemHeaderProps;
+    ActionPlanSectionHeaderProps;
 
   return (
     <div className="flex w-full justify-between items-center">

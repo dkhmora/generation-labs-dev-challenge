@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
-import ActionPlanItemHeader from "./ActionPlanItemHeader";
+import ActionPlanSectionHeader from "./ActionPlanSectionHeader";
 import BoxContainer from "../BoxContainer";
 import DataTable from "../DataTable";
 import { Columns, Rows } from "../../types";
 import { selectItems } from "../../constants";
 
-type ActionPlanItemProps = {
+type ActionPlanSectionProps = {
   title: string;
   icon: JSX.Element;
 };
 
-function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
+function ActionPlanSection({ title, icon }: ActionPlanSectionProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -54,7 +54,7 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
 
   return (
     <BoxContainer className="p-6">
-      <ActionPlanItemHeader
+      <ActionPlanSectionHeader
         title={title}
         icon={icon}
         onDropdownToggle={toggleDropdown}
@@ -73,5 +73,5 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
   );
 }
 
-const MemoizedActionPlanItem = React.memo(ActionPlanItem);
-export default MemoizedActionPlanItem;
+const MemoizedActionPlanSection = React.memo(ActionPlanSection);
+export default MemoizedActionPlanSection;
