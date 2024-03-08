@@ -1,10 +1,10 @@
 import { TableBody, TableRow } from "@mui/material";
 import React from "react";
-import { ColumnKeys, Columns, Rows } from "../../types";
+import { ColumnKeys, Columns, Row } from "../../types";
 import DataTableBodyCell from "./DataTableBodyCell";
 
 type dataTableBodyPropsType = {
-  data: Rows[];
+  data: Row[];
   columns: Columns;
 };
 
@@ -22,7 +22,6 @@ export default function DataTableBody(
               key={`${key}-${index}`}
               columnKey={key as ColumnKeys}
               row={row}
-              columns={columns}
               column={columns[key as ColumnKeys]}
             />
           ))}

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ActionPlanSectionHeader from "./ActionPlanSectionHeader";
 import BoxContainer from "../BoxContainer";
 import DataTable from "../DataTable";
-import { Columns, Rows } from "../../types";
+import { Columns, Row } from "../../types";
 import { selectItems } from "../../constants";
 
 type ActionPlanSectionProps = {
@@ -23,7 +23,7 @@ function ActionPlanSection({ title, icon }: ActionPlanSectionProps) {
   }, []);
 
   // Sample rows data
-  const rows: Rows[] = [
+  const rows: Row[] = [
     {
       id: 1,
       system: "Respiratory system",

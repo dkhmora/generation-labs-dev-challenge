@@ -1,23 +1,28 @@
 import { TableCell } from "@mui/material";
 import React from "react";
 import CustomSelect from "../CustomSelect";
-import { ColumnKeys, Rows, SelectColumn, SelectColumnKeys } from "../../types";
+import {
+  ButtonColumn,
+  ColumnKeys,
+  Row,
+  SelectColumn,
+  SelectColumnKeys,
+} from "../../types";
 
 type DataTableBodyCellProps = {
-  row: Rows;
-  column: SelectColumn;
+  row: Row;
+  column: SelectColumn | ButtonColumn;
   columnKey: ColumnKeys | "id";
 };
 
 const renderField = (
-  column: SelectColumn,
+  column: SelectColumn | ButtonColumn,
   columnKey: ColumnKeys,
-  row: Rows
+  row: Row
 ) => {
   const { fieldType, label, items } = column;
 
   if (fieldType === "select") {
-    console.log(row[columnKey]);
     return (
       <CustomSelect
         value={row[columnKey as SelectColumnKeys]}
@@ -36,9 +41,7 @@ const renderField = (
     return <button>Delete</button>;
   }
 
-  return row[label as SelectColumnKeys]
-    ? row[label as SelectColumnKeys].toString()
-    : "";
+  return row[label as SelectColumnKeys];
 };
 
 export default function DataTableBodyCell(

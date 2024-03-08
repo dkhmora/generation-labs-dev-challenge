@@ -17,16 +17,21 @@ export type SelectColumn = {
   items: CustomSelectItem[];
 };
 
+export type ButtonColumn = {
+  fieldType: FieldTypes;
+  label: string;
+};
+
 export type Columns = {
   system: SelectColumn;
   intervention: SelectColumn;
   dosage: SelectColumn;
   frequency: SelectColumn;
-  notes: { fieldType: FieldTypes; label: string };
-  delete: { fieldType: FieldTypes; label: string };
+  notes: ButtonColumn;
+  delete: ButtonColumn;
 };
 
-export type Rows = {
+export type Row = {
   id: number;
   system: string;
   intervention: string;
