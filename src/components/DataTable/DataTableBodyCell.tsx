@@ -1,43 +1,55 @@
 import { TableCell } from "@mui/material";
 import React from "react";
 import CustomSelect from "../CustomSelect";
-import {
-  ColumnKeys,
-  Columns,
-  Rows,
-  SelectColumn,
-  SelectColumnKeys,
-} from "../../types";
+import { ColumnKeys, Rows, SelectColumn, SelectColumnKeys } from "../../types";
 
 type DataTableBodyCellProps = {
-  columnKey: ColumnKeys | "id";
   row: Rows;
-  columns: Columns;
+  column: SelectColumn;
+  columnKey: ColumnKeys | "id";
+};
+
+const renderField = (
+  column: SelectColumn,
+  columnKey: ColumnKeys,
+  row: Rows
+) => {
+  const { fieldType, label, items } = column;
+
+  if (fieldType === "select") {
+    console.log(row[columnKey]);
+    return (
+      <CustomSelect
+        value={row[columnKey as SelectColumnKeys]}
+        items={items}
+        placeHolder={label}
+        onChange={() => {}}
+      />
+    );
+  }
+
+  if (fieldType === "button/notes") {
+    return <button>Notes</button>;
+  }
+
+  if (fieldType === "button/delete") {
+    return <button>Delete</button>;
+  }
+
+  return row[label as SelectColumnKeys]
+    ? row[label as SelectColumnKeys].toString()
+    : "";
 };
 
 export default function DataTableBodyCell(
   dataTableBodyCellProps: DataTableBodyCellProps
 ) {
-  const { columnKey, row, columns } = dataTableBodyCellProps;
+  const { columnKey, row, column } = dataTableBodyCellProps;
 
   if (columnKey !== "id") {
-    const { fieldType, label } = columns[columnKey as keyof Columns];
     return (
-      <TableCell
-        key={columnKey}
-        component="th"
-        scope="row"
-        sx={{ borderBottom: "none" }}
-      >
-        {fieldType === "select" ? (
-          <CustomSelect
-            placeHolder={label}
-            items={(columns[columnKey as keyof Columns] as SelectColumn).items}
-            value={row[columnKey as keyof Rows] as SelectColumnKeys}
-          />
-        ) : (
-          row[columnKey as keyof Rows]
-        )}
+      <TableCell component="th" scope="row" sx={{ borderBottom: "none" }}>
+        {renderField(column, columnKey, row)}
       </TableCell>
     );
   }

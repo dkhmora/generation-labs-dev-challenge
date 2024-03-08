@@ -23,6 +23,7 @@ export default function DataTableBody(
               columnKey={key as ColumnKeys}
               row={row}
               columns={columns}
+              column={columns[key as ColumnKeys]}
             />
           ))}
         </TableRow>
