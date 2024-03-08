@@ -3,7 +3,7 @@ import React from "react";
 import { Columns } from "../../types";
 
 type dataTableHeadPropsType = {
-  columns: Columns[];
+  columns: Columns;
 };
 
 export default function DataTableHead(
