@@ -1,7 +1,7 @@
-import { TableBody, TableCell, TableRow } from "@mui/material";
+import { TableBody, TableRow } from "@mui/material";
 import React from "react";
-import CustomSelect from "../CustomSelect";
-import { Columns, Rows, SelectColumn, SelectColumnKeys } from "../../types";
+import { ColumnKeys, Columns, Rows } from "../../types";
+import DataTableBodyCell from "./DataTableBodyCell";
 
 type dataTableBodyPropsType = {
   data: Rows[];
@@ -17,32 +17,14 @@ export default function DataTableBody(
     <TableBody>
       {data.map((row) => (
         <TableRow key={row.id}>
-          {Object.keys(row).map((key: string) => {
-            if (key !== "id") {
-              const { fieldType, label } = columns[key as keyof Columns];
-              return (
-                <TableCell
-                  key={key}
-                  component="th"
-                  scope="row"
-                  sx={{ borderBottom: "none" }}
-                >
-                  {fieldType === "select" ? (
-                    <CustomSelect
-                      placeHolder={label}
-                      items={
-                        (columns[key as keyof Columns] as SelectColumn).items
-                      }
-                      value={row[key as keyof Rows] as SelectColumnKeys}
-                    />
-                  ) : (
-                    row[key as keyof Rows]
-                  )}
-                </TableCell>
-              );
-            }
-            return null;
-          })}
+          {Object.keys(row).map((key: string, index) => (
+            <DataTableBodyCell
+              key={`${key}-${index}`}
+              columnKey={key as ColumnKeys}
+              row={row}
+              columns={columns}
+            />
+          ))}
         </TableRow>
       ))}
     </TableBody>

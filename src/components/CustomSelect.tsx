@@ -50,8 +50,6 @@ type customSelectPropsType = {
 export default function CustomSelect(customSelectProps: customSelectPropsType) {
   const { value, items, placeHolder, onChange } = customSelectProps;
 
-  console.log(value);
-
   return (
     <div>
       <FormControl sx={{}}>

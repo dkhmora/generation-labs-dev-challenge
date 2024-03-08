@@ -9,6 +9,7 @@ export type SelectColumnKeys =
   | "intervention"
   | "dosage"
   | "frequency";
+export type ColumnKeys = SelectColumnKeys | "notes" | "delete";
 
 export type SelectColumn = {
   fieldType: FieldTypes;
