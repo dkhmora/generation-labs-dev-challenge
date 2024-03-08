@@ -20,8 +20,10 @@ const MenuProps = {
 
 const CustomFilledInput = styled(FilledInput)(() => ({
   "& .MuiFilledInput-input": {
-    paddingTop: 6,
-    paddingBottom: 6,
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
     fontSize: "14px",
     fontWeight: 400,
   },
@@ -64,7 +66,19 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
             />
           }
           placeholder={placeHolder}
-          MenuProps={MenuProps}
+          MenuProps={{
+            ...MenuProps,
+            sx: {
+              ".MuiMenuItem-root": {
+                fontSize: "14px",
+                fontWeight: 400,
+                color: "#1F1F1F",
+                "&:hover": {
+                  backgroundColor: "#f5f5f5",
+                },
+              },
+            },
+          }}
           inputProps={{ "aria-label": "Without label" }}
           sx={{
             borderRadius: 2,
@@ -75,7 +89,17 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
         >
           {items.map((item) => (
             <MenuItem key={item.value} value={item.value}>
-              {item.value}
+              <span
+                style={{
+                  backgroundColor: item.color || "transparent",
+                  color: item.textColor || "#1F1F1F",
+                  borderRadius: "4px",
+                  display: "inline-block",
+                  padding: "4px 8px 4px 8px",
+                }}
+              >
+                {item.value}
+              </span>
             </MenuItem>
           ))}
         </Select>
