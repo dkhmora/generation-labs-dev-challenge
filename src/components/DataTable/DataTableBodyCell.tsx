@@ -10,6 +10,8 @@ import {
 } from "../../types";
 import AddNoteImage from "../../assets/note_add.svg";
 import DeleteImage from "../../assets/delete.svg";
+import DeleteImageHover from "../../assets/delete_hover.svg";
+import CustomIconButton from "../CustomIconButton";
 
 type DataTableBodyCellProps = {
   row: Row;
@@ -37,23 +39,20 @@ const renderField = (
 
   if (fieldType === "button/notes") {
     return (
-      <IconButton
-        aria-label="favorite"
-        onClick={() => console.log("Icon Button Clicked")}
-      >
-        <img src={AddNoteImage} alt="Add Note" />
-      </IconButton>
+      <CustomIconButton
+        icon={<img src={AddNoteImage} alt="Add Note" />}
+        onClick={() => {}}
+      />
     );
   }
 
   if (fieldType === "button/delete") {
     return (
-      <IconButton
-        aria-label="delete"
-        onClick={() => console.log("Icon Button Clicked")}
-      >
-        <img src={DeleteImage} alt="Delete" />
-      </IconButton>
+      <CustomIconButton
+        icon={<img src={DeleteImage} alt="Delete" />}
+        hoverIcon={<img src={DeleteImageHover} alt="Delete" />}
+        onClick={() => {}}
+      />
     );
   }
 
