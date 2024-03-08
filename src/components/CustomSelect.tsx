@@ -38,7 +38,14 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
   };
 }
 
-export default function CustomSelect() {
+type customSelectPropsType = {
+  value: string[];
+  placeHolder: string;
+  onChange: (event: SelectChangeEvent) => void;
+};
+
+export default function CustomSelect(customSelectProps: customSelectPropsType) {
+  const { value, placeHolder, onChange } = customSelectProps;
   const theme = useTheme();
   const [personName, setPersonName] = React.useState<string[]>([]);
 
@@ -62,7 +69,7 @@ export default function CustomSelect() {
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Placeholder</em>;
+              return <em>{placeHolder}</em>;
             }
 
             return selected.join(", ");

@@ -5,21 +5,20 @@ import DataTableHead from "./DataTableHead";
 
 type DataTableProps = {
   data: any[];
-  columns: any[];
-  columnFieldTypes: object;
+  columns: object;
   loading?: boolean;
   onRowClick?: (row: any) => void;
 };
 
 export default function DataTable(dataTableProps: DataTableProps) {
-  const { data, columns, columnFieldTypes } = dataTableProps;
+  const { data, columns } = dataTableProps;
 
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <DataTableHead columns={columns} />
 
-        <DataTableBody data={data} columnFieldTypes={columnFieldTypes} />
+        <DataTableBody data={data} columns={columns} />
       </Table>
     </TableContainer>
   );

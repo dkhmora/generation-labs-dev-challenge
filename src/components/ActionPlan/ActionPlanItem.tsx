@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ActionPlanItemHeader from "./ActionPlanItemHeader";
 import BoxContainer from "../BoxContainer";
 import DataTable from "../DataTable";
+import { Columns } from "../../types";
 
 type ActionPlanItemProps = {
   title: string;
@@ -33,22 +34,13 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
     },
   ];
 
-  const columns = [
-    { id: "system", label: "System" },
-    { id: "intervention", label: "Calories" },
-    { id: "dosage", label: "Dosage" },
-    { id: "frequency", label: "Frequency" },
-    { id: "notes", label: "Notes" },
-    { id: "delete", label: "" },
-  ];
-
-  const columnFieldTypes = {
-    system: "select",
-    intervention: "select",
-    dosage: "select",
-    frequency: "select",
-    notes: "button/notes",
-    delete: "button/delete",
+  const columns: Columns = {
+    system: { fieldType: "select", label: "System" },
+    intervention: { fieldType: "select", label: "Calories" },
+    dosage: { fieldType: "select", label: "Dosage" },
+    frequency: { fieldType: "select", label: "Frequency" },
+    notes: { fieldType: "button/notes", label: "Notes" },
+    delete: { fieldType: "button/delete", label: "" },
   };
 
   return (
@@ -65,11 +57,7 @@ function ActionPlanItem({ title, icon }: ActionPlanItemProps) {
           className={`mt-3 content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
-          <DataTable
-            data={rows}
-            columns={columns}
-            columnFieldTypes={columnFieldTypes}
-          />
+          <DataTable data={rows} columns={columns} />
         </div>
       </div>
     </BoxContainer>

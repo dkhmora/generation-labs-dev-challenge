@@ -1,12 +1,17 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import React from "react";
 import CustomSelect from "../CustomSelect";
+import { Columns } from "../../types";
 
-export default function DataTableBody(dataTableBodyProps: {
+type dataTableBodyPropsType = {
   data: any[];
-  columnFieldTypes: object;
-}) {
-  const { data, columnFieldTypes } = dataTableBodyProps;
+  columns: Columns;
+};
+
+export default function DataTableBody(
+  dataTableBodyProps: dataTableBodyPropsType
+) {
+  const { data, columns } = dataTableBodyProps;
 
   return (
     <TableBody>
@@ -21,9 +26,10 @@ export default function DataTableBody(dataTableBodyProps: {
                   scope="row"
                   sx={{ borderBottom: "none" }}
                 >
-                  {columnFieldTypes[key as keyof typeof columnFieldTypes] ===
-                  "select" ? (
-                    <CustomSelect />
+                  {columns[key as keyof Columns].fieldType === "select" ? (
+                    <CustomSelect
+                      placeHolder={columns[key as keyof Columns].label}
+                    />
                   ) : (
                     row[key]
                   )}
