@@ -15,8 +15,12 @@ export default function DataTableHead(
     <TableHead>
       <TableRow>
         {Object.entries(columns).map(([key, { fieldType, label, props }]) => (
-          <TableCell key={key} sx={{ borderBottom: "none" }} {...props}>
-            <h5 className="text-sm font-medium font-[#8C8C8C]">{label}</h5>
+          <TableCell
+            key={key}
+            sx={{ borderBottom: "none", paddingBottom: 0 }}
+            {...props}
+          >
+            <h5 className="text-sm font-medium text-[#8C8C8C]">{label}</h5>
           </TableCell>
         ))}
       </TableRow>

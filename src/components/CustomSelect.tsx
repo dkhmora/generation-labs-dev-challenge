@@ -59,7 +59,7 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
               disableUnderline
               style={{
                 backgroundColor: color ? color : "",
-                color: textColor ? textColor : "",
+                color: textColor ? textColor : "#1F1F1F",
               }}
             />
           }
