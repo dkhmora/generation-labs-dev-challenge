@@ -4,6 +4,7 @@ import PillIcon from "../../assets/pill.svg";
 import SpaIcon from "../../assets/spa.svg";
 import CircleImageIcon from "../CircleImageIcon";
 import ActionPlanSection from "./ActionPlanSection";
+import { Button } from "@mui/material";
 
 const MOCK_ACTION_PLAN_SECTIONS = [
   {
@@ -34,7 +35,49 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
   return (
     <section className="w-full">
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Action plan for {userName}</h2>
+        <div className="flex flex-row justify-between align-center items-center pr-2">
+          <div className="flex flex-row justify-center align-center items-center space-x-6">
+            <h2 className="text-2xl font-semibold">
+              Action plan for {userName}
+            </h2>
+
+            <Button
+              sx={{
+                textDecoration: "underline",
+                ":hover": {
+                  textDecoration: "none",
+                },
+                textTransform: "none",
+                borderRadius: 6,
+                fontSize: "16px",
+                color: "#66430D",
+              }}
+              onClick={() => {
+                console.log("Forgot Password Clicked");
+              }}
+            >
+              Duplicate last action plan
+            </Button>
+          </div>
+
+          <Button
+            sx={{
+              textDecoration: "underline",
+              ":hover": {
+                textDecoration: "none",
+              },
+              textTransform: "none",
+              borderRadius: 6,
+              fontSize: "16px",
+              color: "#66430D",
+            }}
+            onClick={() => {
+              console.log("Forgot Password Clicked");
+            }}
+          >
+            Latest report
+          </Button>
+        </div>
 
         <div className="space-y-4">
           {MOCK_ACTION_PLAN_SECTIONS.map((actionPlanSection, index) => (
