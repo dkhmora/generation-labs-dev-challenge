@@ -18,7 +18,7 @@ export default function DataTableBody(
     <TableBody>
       {data.map((row, rowIndex) => (
         <TableRow key={row.id}>
-          {Object.keys(row).map((key: string, index: number) => (
+          {Object.keys(columns).map((key: string, index: number) => (
             <DataTableBodyCell
               key={`${key}-${index}`}
               columnKey={key as ColumnKeys}

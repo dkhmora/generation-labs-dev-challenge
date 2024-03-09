@@ -14,11 +14,14 @@ export default function DataTableHead(
   return (
     <TableHead>
       <TableRow>
-        {Object.entries(columns).map(([key, { fieldType, label, props }]) => (
+        {Object.entries(columns).map(([key, { fieldType, label, width }]) => (
           <TableCell
             key={key}
-            sx={{ borderBottom: "none", paddingBottom: 0 }}
-            {...props}
+            sx={{
+              borderBottom: "none",
+              paddingBottom: 0,
+              width,
+            }}
           >
             <h5 className="text-sm font-medium text-[#8C8C8C]">{label}</h5>
           </TableCell>

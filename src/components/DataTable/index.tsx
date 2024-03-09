@@ -18,7 +18,7 @@ export default function DataTable(dataTableProps: DataTableProps) {
   return (
     <TableContainer component={Paper}>
       <Table
-        sx={{ minWidth: 700, tableLayout: "auto" }}
+        sx={{ minWidth: 700, width: "100%", tableLayout: "auto" }}
         aria-label="customized table"
       >
         <DataTableHead columns={columns} />

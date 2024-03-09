@@ -1,3 +1,5 @@
+import { TableCellProps } from "@mui/material";
+
 export type FieldTypes = "select" | "button/notes" | "button/delete" | "text";
 export type SelectColumnLabel =
   | "System"
@@ -12,16 +14,19 @@ export type SelectColumn = {
   fieldType: FieldTypes;
   label: SelectColumnLabel;
   items: CustomSelectItem[];
+  width: string;
 };
 
 export type TextColumn = {
   fieldType: FieldTypes;
   label: string;
+  width: string;
 };
 
 export type ButtonColumn = {
   fieldType: FieldTypes;
   label: string;
+  width: string;
 };
 
 export type Columns = {
