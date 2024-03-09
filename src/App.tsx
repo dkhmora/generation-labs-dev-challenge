@@ -6,7 +6,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import React from "react";
-import { actionPlanMockData, columns } from "./constants/mockData";
+import { actionPlanMockData, actionPlanColumns } from "./constants";
 import { ActionPlanDataContext } from "./components/ActionPlanDataContext";
 
 // This is a mock data provider for the action plan data
@@ -18,7 +18,9 @@ const ActionPlanDataProvider = ({
   const [data, setData] = React.useState(actionPlanMockData);
 
   return (
-    <ActionPlanDataContext.Provider value={{ data, columns, setData }}>
+    <ActionPlanDataContext.Provider
+      value={{ data, columns: actionPlanColumns, setData }}
+    >
       {children}
     </ActionPlanDataContext.Provider>
   );

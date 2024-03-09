@@ -39,8 +39,7 @@ export type Row = {
   intervention: string;
   dosage: string;
   frequency: string;
-  notes: boolean;
-  delete: boolean;
+  notes: string | null;
 };
 
 export type CustomSelectItem = {

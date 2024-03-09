@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import ActionPlanSectionHeader from "./ActionPlanSectionHeader";
 import BoxContainer from "../BoxContainer";
 import DataTable from "../DataTable";
-import { columns } from "../../constants/mockData";
+import { actionPlanColumns } from "../../constants";
 import { ActionPlanDataContext } from "../ActionPlanDataContext";
 
 type ActionPlanSectionProps = {
@@ -39,7 +39,11 @@ function ActionPlanSection({ title, icon, dataKey }: ActionPlanSectionProps) {
           className={`mt-3 content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
-          <DataTable data={sectionData} dataKey={dataKey} columns={columns} />
+          <DataTable
+            data={sectionData}
+            dataKey={dataKey}
+            columns={actionPlanColumns}
+          />
         </div>
       </div>
     </BoxContainer>

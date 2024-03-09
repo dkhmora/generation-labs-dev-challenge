@@ -4,10 +4,6 @@ import PillIcon from "../../assets/pill.svg";
 import SpaIcon from "../../assets/spa.svg";
 import CircleImageIcon from "../CircleImageIcon";
 import ActionPlanSection from "./ActionPlanSection";
-import { ActionPlanData } from "../../types";
-import { useContext, useState } from "react";
-import { actionPlanMockData } from "../../constants/mockData";
-import { ActionPlanDataContext } from "../ActionPlanDataContext";
 
 const MOCK_ACTION_PLAN_SECTIONS = [
   {

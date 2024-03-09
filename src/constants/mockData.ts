@@ -1,5 +1,5 @@
 import { selectItems } from ".";
-import { ActionPlanData, Columns } from "../types";
+import { ActionPlanData } from "../types";
 
 const { system, intervention, frequency } = selectItems;
 
@@ -11,8 +11,7 @@ export const actionPlanMockData: ActionPlanData = {
       intervention: intervention[3].value,
       dosage: "500mg",
       frequency: frequency[1].value,
-      notes: true,
-      delete: true,
+      notes: "Test note",
     },
   ],
   medicationIntervention: [
@@ -22,8 +21,7 @@ export const actionPlanMockData: ActionPlanData = {
       intervention: intervention[3].value,
       dosage: "500mg",
       frequency: frequency[1].value,
-      notes: true,
-      delete: true,
+      notes: null,
     },
   ],
   fitness: [
@@ -33,8 +31,7 @@ export const actionPlanMockData: ActionPlanData = {
       intervention: intervention[3].value,
       dosage: "500mg",
       frequency: frequency[1].value,
-      notes: true,
-      delete: true,
+      notes: null,
     },
   ],
   therapyIntervention: [
@@ -44,25 +41,7 @@ export const actionPlanMockData: ActionPlanData = {
       intervention: intervention[3].value,
       dosage: "500mg",
       frequency: frequency[1].value,
-      notes: true,
-      delete: true,
+      notes: null,
     },
   ],
-};
-
-export const columns: Columns = {
-  system: { fieldType: "select", label: "System", items: selectItems.system },
-  intervention: {
-    fieldType: "select",
-    label: "Intervention",
-    items: selectItems.intervention,
-  },
-  dosage: { fieldType: "text", label: "Dosage" },
-  frequency: {
-    fieldType: "select",
-    label: "Frequency",
-    items: selectItems.frequency,
-  },
-  notes: { fieldType: "button/notes", label: "Notes" },
-  delete: { fieldType: "button/delete", label: "" },
 };

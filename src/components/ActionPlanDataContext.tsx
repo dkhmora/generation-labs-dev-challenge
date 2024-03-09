@@ -1,8 +1,8 @@
 import React from "react";
-import { actionPlanMockData, columns } from "../constants/mockData";
+import { actionPlanMockData, actionPlanColumns } from "../constants";
 
 export const ActionPlanDataContext = React.createContext({
   data: actionPlanMockData,
-  columns,
+  columns: actionPlanColumns,
   setData: (data: any) => {},
 });
