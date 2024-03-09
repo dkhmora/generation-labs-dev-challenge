@@ -1,5 +1,3 @@
-import { TableCellProps } from "@mui/material";
-
 export type FieldTypes = "select" | "button/notes" | "button/delete" | "text";
 export type SelectColumnLabel =
   | "System"

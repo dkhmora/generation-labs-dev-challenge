@@ -1,5 +1,4 @@
 import { TableBody, TableRow } from "@mui/material";
-import React from "react";
 import { ColumnKeys, Columns, Row } from "../../types";
 import DataTableBodyCell from "./DataTableBodyCell";
 

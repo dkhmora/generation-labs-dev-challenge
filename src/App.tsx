@@ -7,7 +7,10 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import React from "react";
 import { actionPlanMockData, actionPlanColumns } from "./constants";
-import { ActionPlanDataContext } from "./components/ActionPlanDataContext";
+import {
+  ActionPlanDataContext,
+  NotesData,
+} from "./components/ActionPlanDataContext";
 
 // This is a mock data provider for the action plan data
 const ActionPlanDataProvider = ({
@@ -17,7 +20,7 @@ const ActionPlanDataProvider = ({
 }) => {
   const [data, setData] = React.useState(actionPlanMockData);
   const [isNotesModalOpen, setIsNotesModalOpen] = React.useState(false);
-  const [notesData, setNotesData] = React.useState({
+  const [notesData, setNotesData] = React.useState<NotesData>({
     notesText: "",
     rowIndex: 0,
     dataKey: "",

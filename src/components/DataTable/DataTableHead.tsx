@@ -1,5 +1,4 @@
 import { TableCell, TableHead, TableRow } from "@mui/material";
-import React from "react";
 import { Columns } from "../../types";
 
 type dataTableHeadPropsType = {
@@ -14,7 +13,7 @@ export default function DataTableHead(
   return (
     <TableHead>
       <TableRow>
-        {Object.entries(columns).map(([key, { fieldType, label, width }]) => (
+        {Object.entries(columns).map(([key, { label, width }]) => (
           <TableCell
             key={key}
             sx={{

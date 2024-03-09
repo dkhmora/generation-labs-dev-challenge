@@ -13,7 +13,7 @@ import SearchIcon from "@mui/icons-material/Search";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 
-const CustomPopover = styled(Popover)(({ theme }) => ({
+const CustomPopover = styled(Popover)(() => ({
   ".MuiPaper-root": {
     width: 300,
     marginTop: "4px",
@@ -34,13 +34,11 @@ type CustomSelectPropsType = {
 
 export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
   const { items, placeholder, onChange, value, search } = customSelectProps;
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<
+    (EventTarget & HTMLButtonElement) | null
+  >(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [customValue, setCustomValue] = useState("");
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -48,8 +46,8 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
     setCustomValue("");
   };
 
-  const handleCustomChange = (event) => {
-    setCustomValue(event.target.value);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
   };
 
   const handleConfirmCustomValue = () => {
@@ -57,11 +55,15 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
     handleClose();
   };
 
-  const handleSearchChange = (event) => {
+  const handleCustomChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomValue(event.target.value);
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSelect = (value) => {
+  const handleSelect = (value: string) => {
     onChange(value);
     handleClose();
   };

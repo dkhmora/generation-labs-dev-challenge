@@ -1,4 +1,3 @@
-import React from "react";
 import { Table, TableContainer, Paper } from "@mui/material";
 import DataTableBody from "./DataTableBody";
 import DataTableHead from "./DataTableHead";
