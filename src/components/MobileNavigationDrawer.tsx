@@ -1,9 +1,20 @@
 import React, { useState } from "react";
-import { Button, Drawer, IconButton } from "@mui/material";
+import { Drawer, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavbarItemsList from "./NavbarItemsList";
 
-export default function MobileNavigationDrawer({ items }: { items: string[] }) {
+type MobileNavigationDrawerProps = {
+  items: string[];
+  selectedItem: string;
+  onSelect: (item: string) => void;
+  sx?: object;
+};
+
+export default function MobileNavigationDrawer({
+  items,
+  selectedItem,
+  onSelect,
+}: MobileNavigationDrawerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer =
@@ -20,30 +31,32 @@ export default function MobileNavigationDrawer({ items }: { items: string[] }) {
     };
 
   return (
-    <div>
-      <React.Fragment>
-        <IconButton
-          onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
-            toggleDrawer(true)(event)
-          }
-          edge="start"
-          className="text-white"
-          aria-label="menu"
-          size="large"
+    <React.Fragment>
+      <IconButton
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+          toggleDrawer(true)(event)
+        }
+        edge="start"
+        className="text-white"
+        aria-label="menu"
+        size="large"
+      >
+        <MenuIcon fontSize="large" />
+      </IconButton>
+      <Drawer anchor={"left"} open={isOpen} onClose={toggleDrawer(false)}>
+        <div
+          className="w-80 mt-10"
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
         >
-          <MenuIcon fontSize="large" />
-        </IconButton>
-        <Drawer anchor={"left"} open={isOpen} onClose={toggleDrawer(false)}>
-          <div
-            className="w-80 mt-10"
-            role="presentation"
-            onClick={toggleDrawer(false)}
-            onKeyDown={toggleDrawer(false)}
-          >
-            <NavbarItemsList items={items} defaultItem="Dashboard" />
-          </div>
-        </Drawer>
-      </React.Fragment>
-    </div>
+          <NavbarItemsList
+            items={items}
+            selectedItem={selectedItem}
+            onSelect={onSelect}
+          />
+        </div>
+      </Drawer>
+    </React.Fragment>
   );
 }

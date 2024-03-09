@@ -1,29 +1,25 @@
 import { List, ListItemButton, ListItemText } from "@mui/material";
-import { useState } from "react";
 
 type NavbarItemsListProps = {
   items: string[];
-  defaultItem: string;
+  selectedItem: string;
+  onSelect: (item: string) => void;
   sx?: object;
 };
 
 export default function NavbarItemsList({
   items,
-  defaultItem,
+  selectedItem,
+  onSelect,
   sx,
 }: NavbarItemsListProps) {
-  const [selectedItem, setSelectedItem] = useState(defaultItem);
-  const handleListItemClick = (item: string) => {
-    setSelectedItem(item);
-  };
-
   return (
-    <List sx={{ display: "flex", ...sx }}>
+    <List sx={sx}>
       {items.map((text) => (
         <ListItemButton
           key={text}
           selected={selectedItem === text}
-          onClick={() => handleListItemClick(text)}
+          onClick={() => onSelect(text)}
           sx={{
             bgcolor: selectedItem === text ? "#000" : "transparent",
             "&.Mui-selected": {
@@ -37,8 +33,8 @@ export default function NavbarItemsList({
               bgcolor: "rgba(147, 133, 98, 0.1)",
             },
             height: "auto",
-            paddingTop: "24px",
-            paddingBottom: "24px",
+            paddingTop: "0px",
+            paddingBottom: "0px",
             "@media (min-width:1024px)": {
               height: "80px",
               paddingTop: "16px",
@@ -56,9 +52,8 @@ export default function NavbarItemsList({
                   display: "inline-flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  paddingBottom: "26px",
-                  marginTop: "26px",
                 }}
+                className="py-4 md:py-[26px]"
               >
                 {text}
               </div>
