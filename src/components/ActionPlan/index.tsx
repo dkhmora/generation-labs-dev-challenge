@@ -6,6 +6,9 @@ import CircleImageIcon from "../CircleImageIcon";
 import ActionPlanSection from "./ActionPlanSection";
 import { Button } from "@mui/material";
 import LeftChevron from "../../assets/left_chevron.svg";
+import TextInputModal from "../TextInputModal";
+import { ActionPlanDataContext } from "../ActionPlanDataContext";
+import React from "react";
 
 const MOCK_ACTION_PLAN_SECTIONS = [
   {
@@ -32,9 +35,31 @@ const MOCK_ACTION_PLAN_SECTIONS = [
 
 export default function ActionPlan(actionPlanProps: { userName: string }) {
   const { userName } = actionPlanProps;
+  const {
+    notesData: { notesText },
+    isNotesModalOpen,
+    setNotesData,
+    setIsNotesModalOpen,
+    saveNotes,
+  } = React.useContext(ActionPlanDataContext);
+
+  const handleChangeText = (text: string) => {
+    setNotesData((prevData: any) => ({
+      ...prevData,
+      notesText: text,
+    }));
+  };
 
   return (
     <section className="w-full">
+      <TextInputModal
+        open={isNotesModalOpen}
+        text={notesText}
+        onChangeText={handleChangeText}
+        clickSave={() => saveNotes()}
+        clickCancel={() => setIsNotesModalOpen(false)}
+      />
+
       <div className="space-y-4">
         <div>
           <Button

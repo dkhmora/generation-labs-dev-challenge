@@ -16,10 +16,42 @@ const ActionPlanDataProvider = ({
   children: React.ReactNode;
 }) => {
   const [data, setData] = React.useState(actionPlanMockData);
+  const [isNotesModalOpen, setIsNotesModalOpen] = React.useState(false);
+  const [notesData, setNotesData] = React.useState({
+    notesText: "",
+    rowIndex: 0,
+    dataKey: "",
+  });
 
   return (
     <ActionPlanDataContext.Provider
-      value={{ data, columns: actionPlanColumns, setData }}
+      value={{
+        data,
+        columns: actionPlanColumns,
+        setData,
+        notesData,
+        setNotesData,
+        isNotesModalOpen,
+        setIsNotesModalOpen,
+        saveNotes: () => {
+          const { rowIndex, dataKey, notesText } = notesData;
+          setData((prevData: any) => {
+            const prevSectionData = prevData[dataKey];
+            prevSectionData[rowIndex].notes = notesText;
+
+            return {
+              ...prevData,
+              [dataKey]: prevSectionData,
+            };
+          });
+          setNotesData({
+            notesText: "",
+            rowIndex: 0,
+            dataKey: "",
+          });
+          setIsNotesModalOpen(false);
+        },
+      }}
     >
       {children}
     </ActionPlanDataContext.Provider>

@@ -30,7 +30,9 @@ const renderField = (
   row: Row,
   rowIndex: number,
   setData: (data: any) => void,
-  dataKey: string
+  dataKey: string,
+  setIsNotesModalOpen: (isOpen: boolean) => void,
+  setNotesData: (data: any) => void
 ) => {
   const { fieldType, label } = column;
   const handleDataChange = (value: string) => {
@@ -73,7 +75,10 @@ const renderField = (
     content = (
       <CustomIconButton
         icon={<img src={AddNoteImage} alt="Add Note" />}
-        onClick={() => {}}
+        onClick={() => {
+          setNotesData({ notesText: row.notes, rowIndex, dataKey });
+          setIsNotesModalOpen(true);
+        }}
       />
     );
   } else if (fieldType === "button/delete") {
@@ -102,7 +107,9 @@ const renderField = (
 export default function DataTableBodyCell(
   dataTableBodyCellProps: DataTableBodyCellProps
 ) {
-  const { setData } = useContext(ActionPlanDataContext);
+  const { setData, setIsNotesModalOpen, setNotesData } = useContext(
+    ActionPlanDataContext
+  );
   const { columnKey, row, column, rowIndex, dataKey } = dataTableBodyCellProps;
 
   return (
@@ -111,7 +118,16 @@ export default function DataTableBodyCell(
       scope="row"
       sx={{ borderBottom: "none", minWidth: 100 }}
     >
-      {renderField(column, columnKey, row, rowIndex, setData, dataKey)}
+      {renderField(
+        column,
+        columnKey,
+        row,
+        rowIndex,
+        setData,
+        dataKey,
+        setIsNotesModalOpen,
+        setNotesData
+      )}
     </TableCell>
   );
 }
