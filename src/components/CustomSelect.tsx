@@ -7,7 +7,7 @@ import List from "@mui/material/List";
 import CustomTextField from "./CustomTextField"; // Assuming this is your custom styled TextField
 import { CustomSelectItem } from "../types";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { InputAdornment } from "@mui/material";
+import { Box, InputAdornment, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 const ITEM_HEIGHT = 48;
@@ -15,28 +15,12 @@ const ITEM_PADDING_TOP = 8;
 
 const CustomPopover = styled(Popover)(({ theme }) => ({
   ".MuiPaper-root": {
-    maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
     width: 300,
     marginTop: "4px",
     borderRadius: "8px",
-    border: "1px solid #D9D9D9",
-    boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
+    boxShadow: "none",
     overflowY: "auto",
-    "&::-webkit-scrollbar": {
-      width: "8px",
-      height: "8px",
-    },
-    "&::-webkit-scrollbar-track": {
-      backgroundColor: "transparent",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "#BFBFBF",
-      borderRadius: "3.5px",
-      border: "2px solid #fff",
-    },
-    "&::-webkit-scrollbar-thumb:hover": {
-      backgroundColor: "#777",
-    },
+    backgroundColor: "transparent",
   },
 }));
 
@@ -146,48 +130,132 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
           vertical: "top",
           horizontal: "left",
         }}
+        sx={{ backgroundColor: "transparent" }}
       >
-        {search && (
-          <div className="px-2">
-            <CustomTextField
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-              fullWidth
-              margin="dense"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon sx={{ color: "#BFBFBF" }} />
-                  </InputAdornment>
-                ),
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            borderWidth: "0px",
+            borderRadius: "8px",
+          }}
+        >
+          {search && (
+            <Box
+              sx={{
+                pt: 1,
+                px: 1,
+                backgroundColor: "background.paper",
+                borderTopRightRadius: "8px",
+                borderTopLeftRadius: "8px",
+                borderLeftWidth: "1px",
+                borderRightWidth: "1px",
+                borderTopWidth: "1px",
               }}
-            />
-          </div>
-        )}
-
-        <List>
-          {filteredItems.map((item) => (
-            <MenuItem
-              key={item.value}
-              onClick={() => handleSelect(item.value)}
-              sx={{ paddingLeft: 1, paddingRight: 1 }}
             >
-              <span
-                style={{
-                  backgroundColor: item.color || "transparent",
-                  color: item.textColor || "#1F1F1F",
-                  borderRadius: "8px",
-                  display: "inline-block",
-                  padding: item.color ? "4px 8px 4px 8px" : "0px 0px 0px 0px",
-                  fontSize: "14px",
+              <CustomTextField
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                fullWidth
+                margin="dense"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <SearchIcon sx={{ color: "#BFBFBF" }} />
+                    </InputAdornment>
+                  ),
                 }}
-              >
-                {item.value}
-              </span>
-            </MenuItem>
-          ))}
-        </List>
+                sx={{ mt: 0.5 }}
+              />
+            </Box>
+          )}
+
+          <Box
+            sx={{
+              overflowX: "hidden",
+              overflowY: "auto",
+              flexGrow: 1,
+              backgroundColor: "background.paper",
+              "&::-webkit-scrollbar": {
+                width: "8px",
+                height: "8px",
+              },
+              "&::-webkit-scrollbar-track": {
+                backgroundColor: "transparent",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#BFBFBF",
+                borderRadius: "3.5px",
+                border: "2px solid #fff",
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                backgroundColor: "#777",
+              },
+              borderWidth: "1px",
+              borderTopWidth: "0px",
+              borderTopRightRadius: "0px",
+              borderTopLeftRadius: "0px",
+              borderBottomLeftRadius: "8px",
+              borderBottomRightRadius: "8px",
+            }}
+          >
+            <List>
+              {filteredItems.map((item) => (
+                <MenuItem
+                  key={item.value}
+                  onClick={() => handleSelect(item.value)}
+                  sx={{ paddingLeft: 1, paddingRight: 1 }}
+                >
+                  <span
+                    style={{
+                      backgroundColor: item.color || "transparent",
+                      color: item.textColor || "#1F1F1F",
+                      borderRadius: "8px",
+                      display: "inline-block",
+                      padding: item.color
+                        ? "4px 8px 4px 8px"
+                        : "0px 0px 0px 0px",
+                      fontSize: "14px",
+                    }}
+                  >
+                    {item.value}
+                  </span>
+                </MenuItem>
+              ))}
+            </List>
+          </Box>
+
+          {search && (
+            <Box
+              sx={{
+                px: 1,
+                py: 1,
+                backgroundColor: "background.paper",
+                mt: "4px",
+                borderRadius: "8px",
+                borderWidth: "1px",
+              }}
+            >
+              <CustomTextField
+                placeholder="Customized"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                fullWidth
+                margin="dense"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <SearchIcon sx={{ color: "#BFBFBF" }} />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{ mt: 0.5 }}
+              />
+            </Box>
+          )}
+        </Box>
       </CustomPopover>
     </div>
   );
