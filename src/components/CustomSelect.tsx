@@ -3,7 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { CustomSelectItem } from "../types";
-import { FilledInput } from "@mui/material";
+import { FilledInput, InputLabel } from "@mui/material";
 import styled from "@mui/material/styles/styled";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
@@ -109,6 +109,11 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
               }}
             />
           }
+          renderValue={
+            value !== ""
+              ? undefined
+              : () => <em style={{ color: "#aaa" }}>WAT</em>
+          }
           placeholder={placeHolder}
           MenuProps={{
             ...MenuProps,
@@ -132,6 +137,19 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
           }}
           IconComponent={CustomKeyboardArrowDownIcon}
         >
+          <MenuItem disabled value={undefined}>
+            <span
+              style={{
+                color: "#8C8C8C",
+                borderRadius: "8px",
+                display: "inline-block",
+                padding: "4px 8px 4px 8px",
+              }}
+            >
+              <em>{placeHolder}</em>
+            </span>
+          </MenuItem>
+
           {items.map((item) => (
             <MenuItem key={item.value} value={item.value}>
               <span

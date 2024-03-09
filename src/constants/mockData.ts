@@ -3,10 +3,17 @@ import { ActionPlanData } from "../types";
 
 const { system, intervention, frequency } = selectItems;
 
+export const defaultData = {
+  system: undefined,
+  intervention: undefined,
+  dosage: undefined,
+  frequency: undefined,
+  notes: undefined,
+};
+
 export const actionPlanMockData: ActionPlanData = {
   nutritionAndSupplementIntervention: [
     {
-      id: 1,
       system: system[0].value,
       intervention: intervention[3].value,
       dosage: "500mg",
@@ -16,7 +23,6 @@ export const actionPlanMockData: ActionPlanData = {
   ],
   medicationIntervention: [
     {
-      id: 1,
       system: system[1].value,
       intervention: intervention[3].value,
       dosage: "500mg",
@@ -26,7 +32,6 @@ export const actionPlanMockData: ActionPlanData = {
   ],
   fitness: [
     {
-      id: 1,
       system: system[1].value,
       intervention: intervention[3].value,
       dosage: "500mg",
@@ -36,7 +41,6 @@ export const actionPlanMockData: ActionPlanData = {
   ],
   therapyIntervention: [
     {
-      id: 1,
       system: system[1].value,
       intervention: intervention[3].value,
       dosage: "500mg",

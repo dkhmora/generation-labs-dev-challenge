@@ -39,7 +39,6 @@ export type Columns = {
 };
 
 export type Row = {
-  id: number;
   system: string;
   intervention: string;
   dosage: string;

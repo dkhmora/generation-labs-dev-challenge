@@ -19,7 +19,7 @@ import { ActionPlanDataContext } from "../ActionPlanDataContext";
 type DataTableBodyCellProps = {
   row: Row;
   column: SelectColumn | ButtonColumn | TextColumn;
-  columnKey: ColumnKeys | "id";
+  columnKey: ColumnKeys;
   rowIndex: number;
   dataKey: string;
 };
@@ -93,17 +93,13 @@ export default function DataTableBodyCell(
   const { setData } = useContext(ActionPlanDataContext);
   const { columnKey, row, column, rowIndex, dataKey } = dataTableBodyCellProps;
 
-  if (columnKey !== "id") {
-    return (
-      <TableCell
-        component="th"
-        scope="row"
-        sx={{ borderBottom: "none", minWidth: 100 }}
-      >
-        {renderField(column, columnKey, row, rowIndex, setData, dataKey)}
-      </TableCell>
-    );
-  }
-
-  return null;
+  return (
+    <TableCell
+      component="th"
+      scope="row"
+      sx={{ borderBottom: "none", minWidth: 100 }}
+    >
+      {renderField(column, columnKey, row, rowIndex, setData, dataKey)}
+    </TableCell>
+  );
 }
