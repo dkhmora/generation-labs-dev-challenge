@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, TableContainer, Paper } from "@mui/material";
+import { Table, TableContainer, Paper, Button } from "@mui/material";
 import DataTableBody from "./DataTableBody";
 import DataTableHead from "./DataTableHead";
 import { Columns, Row } from "../../types";
@@ -25,6 +25,23 @@ export default function DataTable(dataTableProps: DataTableProps) {
 
         <DataTableBody data={data} dataKey={dataKey} columns={columns} />
       </Table>
+
+      <Button
+        variant="text"
+        sx={{
+          color: "black",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 6,
+          textTransform: "none",
+          fontSize: "14px",
+          fontWeight: 400,
+          marginLeft: "10px",
+        }}
+      >
+        + Add new
+      </Button>
     </TableContainer>
   );
 }
