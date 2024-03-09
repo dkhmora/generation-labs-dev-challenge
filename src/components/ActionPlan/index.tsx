@@ -47,6 +47,9 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
               borderRadius: 12,
               paddingLeft: 0,
             }}
+            onClick={() => {
+              console.log("Back Clicked");
+            }}
           >
             <div className="mr-3">
               <CircleImageIcon icon={LeftChevron} className="bg-white p-3.5" />
@@ -73,7 +76,7 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
                     color: "#66430D",
                   }}
                   onClick={() => {
-                    console.log("Forgot Password Clicked");
+                    console.log("Duplicate last action plan Clicked");
                   }}
                 >
                   Duplicate last action plan
@@ -94,7 +97,7 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
                   color: "#66430D",
                 }}
                 onClick={() => {
-                  console.log("Forgot Password Clicked");
+                  console.log("Latest report Clicked");
                 }}
               >
                 Latest report
@@ -129,7 +132,7 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
                 paddingRight: 8,
               }}
               onClick={() => {
-                console.log("Forgot Password Clicked");
+                console.log("Send Button Clicked");
               }}
             >
               Send
