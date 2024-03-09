@@ -5,8 +5,9 @@ import SpaIcon from "../../assets/spa.svg";
 import CircleImageIcon from "../CircleImageIcon";
 import ActionPlanSection from "./ActionPlanSection";
 import { ActionPlanData } from "../../types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { actionPlanMockData } from "../../constants/mockData";
+import { ActionPlanDataContext } from "../ActionPlanDataContext";
 
 const MOCK_ACTION_PLAN_SECTIONS = [
   {
@@ -33,8 +34,6 @@ const MOCK_ACTION_PLAN_SECTIONS = [
 
 export default function ActionPlan(actionPlanProps: { userName: string }) {
   const { userName } = actionPlanProps;
-  const [actionPlanData, setActionPlanData] =
-    useState<ActionPlanData>(actionPlanMockData);
 
   return (
     <section className="w-full">
@@ -45,11 +44,7 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
           {MOCK_ACTION_PLAN_SECTIONS.map((actionPlanSection, index) => (
             <ActionPlanSection
               key={`${actionPlanSection.title}-${index}`}
-              data={
-                actionPlanData[
-                  actionPlanSection.dataKey as keyof ActionPlanData
-                ]
-              }
+              dataKey={actionPlanSection.dataKey}
               title={actionPlanSection.title}
               icon={actionPlanSection.icon}
             />

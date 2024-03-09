@@ -1,5 +1,5 @@
 import { Box, IconButton, TableCell, TextField } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import CustomSelect from "../CustomSelect";
 import {
   ButtonColumn,
@@ -14,19 +14,38 @@ import DeleteImage from "../../assets/delete.svg";
 import DeleteImageHover from "../../assets/delete_hover.svg";
 import CustomIconButton from "../CustomIconButton";
 import CustomTextField from "../CustomTextField";
+import { ActionPlanDataContext } from "../ActionPlanDataContext";
 
 type DataTableBodyCellProps = {
   row: Row;
   column: SelectColumn | ButtonColumn | TextColumn;
   columnKey: ColumnKeys | "id";
+  rowIndex: number;
+  dataKey: string;
 };
 
 const renderField = (
   column: SelectColumn | ButtonColumn | TextColumn,
   columnKey: ColumnKeys,
-  row: Row
+  row: Row,
+  rowIndex: number,
+  setData: (data: any) => void,
+  dataKey: string
 ) => {
   const { fieldType, label } = column;
+  const handleDataChange = (value: string) => {
+    const updatedRow = { ...row, [columnKey]: value };
+
+    setData((prevData: any) => {
+      const prevSectionData = prevData[dataKey];
+      prevSectionData[rowIndex] = updatedRow;
+
+      return {
+        ...prevData,
+        [dataKey]: prevSectionData,
+      };
+    });
+  };
 
   let content = null;
 
@@ -36,7 +55,7 @@ const renderField = (
         value={row[columnKey as SelectColumnKeys]}
         items={column.items}
         placeHolder={label}
-        onChange={() => {}}
+        onChange={(event) => handleDataChange(event.target.value)}
       />
     );
   } else if (fieldType === "button/notes") {
@@ -58,7 +77,7 @@ const renderField = (
     content = (
       <CustomTextField
         value={row[columnKey as SelectColumnKeys]}
-        onChange={() => {}}
+        onChange={(event) => handleDataChange(event.target.value)}
       />
     );
   } else {
@@ -71,7 +90,8 @@ const renderField = (
 export default function DataTableBodyCell(
   dataTableBodyCellProps: DataTableBodyCellProps
 ) {
-  const { columnKey, row, column } = dataTableBodyCellProps;
+  const { setData } = useContext(ActionPlanDataContext);
+  const { columnKey, row, column, rowIndex, dataKey } = dataTableBodyCellProps;
 
   if (columnKey !== "id") {
     return (
@@ -80,7 +100,7 @@ export default function DataTableBodyCell(
         scope="row"
         sx={{ borderBottom: "none", minWidth: 100 }}
       >
-        {renderField(column, columnKey, row)}
+        {renderField(column, columnKey, row, rowIndex, setData, dataKey)}
       </TableCell>
     );
   }

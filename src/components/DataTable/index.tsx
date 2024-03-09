@@ -7,12 +7,13 @@ import { Columns, Row } from "../../types";
 type DataTableProps = {
   data: Row[];
   columns: Columns;
+  dataKey: string;
   loading?: boolean;
   onRowClick?: (row: any) => void;
 };
 
 export default function DataTable(dataTableProps: DataTableProps) {
-  const { data, columns } = dataTableProps;
+  const { data, columns, dataKey } = dataTableProps;
 
   return (
     <TableContainer component={Paper}>
@@ -22,7 +23,7 @@ export default function DataTable(dataTableProps: DataTableProps) {
       >
         <DataTableHead columns={columns} />
 
-        <DataTableBody data={data} columns={columns} />
+        <DataTableBody data={data} dataKey={dataKey} columns={columns} />
       </Table>
     </TableContainer>
   );

@@ -1,19 +1,21 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import ActionPlanSectionHeader from "./ActionPlanSectionHeader";
 import BoxContainer from "../BoxContainer";
 import DataTable from "../DataTable";
-import { Row } from "../../types";
 import { columns } from "../../constants/mockData";
+import { ActionPlanDataContext } from "../ActionPlanDataContext";
 
 type ActionPlanSectionProps = {
   title: string;
   icon: JSX.Element;
-  data: Row[];
+  dataKey: string;
 };
 
-function ActionPlanSection({ title, icon, data }: ActionPlanSectionProps) {
+function ActionPlanSection({ title, icon, dataKey }: ActionPlanSectionProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const { data } = useContext(ActionPlanDataContext);
+  const sectionData = data[dataKey as keyof typeof data];
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
@@ -37,7 +39,7 @@ function ActionPlanSection({ title, icon, data }: ActionPlanSectionProps) {
           className={`mt-3 content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
-          <DataTable data={data} columns={columns} />
+          <DataTable data={sectionData} dataKey={dataKey} columns={columns} />
         </div>
       </div>
     </BoxContainer>

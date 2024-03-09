@@ -6,23 +6,26 @@ import DataTableBodyCell from "./DataTableBodyCell";
 type dataTableBodyPropsType = {
   data: Row[];
   columns: Columns;
+  dataKey: string;
 };
 
 export default function DataTableBody(
   dataTableBodyProps: dataTableBodyPropsType
 ) {
-  const { data, columns } = dataTableBodyProps;
+  const { data, columns, dataKey } = dataTableBodyProps;
 
   return (
     <TableBody>
-      {data.map((row) => (
+      {data.map((row, rowIndex) => (
         <TableRow key={row.id}>
-          {Object.keys(row).map((key: string, index) => (
+          {Object.keys(row).map((key: string, index: number) => (
             <DataTableBodyCell
               key={`${key}-${index}`}
               columnKey={key as ColumnKeys}
+              dataKey={dataKey}
               row={row}
               column={columns[key as ColumnKeys]}
+              rowIndex={rowIndex}
             />
           ))}
         </TableRow>
