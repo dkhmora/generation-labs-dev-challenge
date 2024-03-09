@@ -1,6 +1,6 @@
-import { ColumnItems } from "../types";
+import { ColumnSelectItems } from "../types";
 
-export const selectItems: ColumnItems = {
+export const selectItems: ColumnSelectItems = {
   system: [
     {
       value: "Respiratory system",
@@ -96,12 +96,6 @@ export const selectItems: ColumnItems = {
     {
       value: "Grape Seed Extract 90% polyphenol",
       tooltipText: "Grape Seed Extract 90% polyphenol",
-    },
-  ],
-  dosage: [
-    {
-      value: "500mg",
-      tooltipText: "500mg",
     },
   ],
   frequency: [

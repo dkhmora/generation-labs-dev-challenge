@@ -42,7 +42,7 @@ function ActionPlanSection({ title, icon }: ActionPlanSectionProps) {
       label: "Intervention",
       items: selectItems.intervention,
     },
-    dosage: { fieldType: "select", label: "Dosage", items: selectItems.dosage },
+    dosage: { fieldType: "text", label: "Dosage" },
     frequency: {
       fieldType: "select",
       label: "Frequency",
