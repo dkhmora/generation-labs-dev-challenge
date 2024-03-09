@@ -68,7 +68,7 @@ const renderField = (
         value={row[columnKey as SelectColumnKeys]}
         items={column.items}
         placeholder={label}
-        onChange={(event) => handleDataChange(event.target.value)}
+        onChange={(value) => handleDataChange(value)}
       />
     );
   } else if (fieldType === "button/notes") {
