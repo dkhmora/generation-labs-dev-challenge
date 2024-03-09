@@ -10,7 +10,7 @@ type CustomIconButtonProps = {
 export default function CustomIconButton(
   customIconButtonProps: CustomIconButtonProps
 ) {
-  const { icon, hoverIcon } = customIconButtonProps;
+  const { icon, hoverIcon, onClick } = customIconButtonProps;
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ export default function CustomIconButton(
       aria-label="icon-button"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => console.log("Icon Button Clicked")}
+      onClick={onClick}
     >
       {isHovered && hoverIcon ? hoverIcon : icon}
     </IconButton>

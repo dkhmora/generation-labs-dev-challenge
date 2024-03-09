@@ -97,7 +97,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
       <FormControl>
         <Select
           displayEmpty
-          value={value}
+          value={value || ""}
           onChange={onChange}
           input={
             <CustomFilledInput
@@ -108,11 +108,6 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
                 paddingRight: "8px",
               }}
             />
-          }
-          renderValue={
-            value !== ""
-              ? undefined
-              : () => <em style={{ color: "#aaa" }}>WAT</em>
           }
           placeholder={placeHolder}
           MenuProps={{
@@ -137,7 +132,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
           }}
           IconComponent={CustomKeyboardArrowDownIcon}
         >
-          <MenuItem disabled value={undefined}>
+          <MenuItem disabled value="">
             <span
               style={{
                 color: "#8C8C8C",

@@ -46,6 +46,17 @@ const renderField = (
       };
     });
   };
+  const handleClickDelete = () => {
+    setData((prevData: any) => {
+      const prevSectionData = prevData[dataKey];
+      prevSectionData.splice(rowIndex, 1);
+
+      return {
+        ...prevData,
+        [dataKey]: prevSectionData,
+      };
+    });
+  };
 
   let content = null;
 
@@ -70,7 +81,7 @@ const renderField = (
       <CustomIconButton
         icon={<img src={DeleteImage} alt="Delete" />}
         hoverIcon={<img src={DeleteImageHover} alt="Delete" />}
-        onClick={() => {}}
+        onClick={handleClickDelete}
       />
     );
   } else if (fieldType === "text") {
