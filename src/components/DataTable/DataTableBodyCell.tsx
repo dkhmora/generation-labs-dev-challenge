@@ -1,5 +1,5 @@
 import { Box, TableCell } from "@mui/material";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import CustomSelect from "../CustomSelect";
 import {
   ButtonColumn,
@@ -35,7 +35,7 @@ const renderField = (
   setIsNotesModalOpen: (isOpen: boolean) => void,
   setNotesData: (data: any) => void
 ) => {
-  const { fieldType, fieldProps, label } = column;
+  const { fieldType, label } = column;
   const handleDataChange = (value: string) => {
     const updatedRow = { ...row, [columnKey]: value };
 
@@ -70,7 +70,7 @@ const renderField = (
         items={column.items}
         placeholder={label}
         onChange={(value) => handleDataChange(value)}
-        {...fieldProps}
+        {...column.fieldProps}
       />
     );
   } else if (fieldType === "button/notes") {

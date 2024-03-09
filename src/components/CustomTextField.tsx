@@ -1,7 +1,6 @@
 import { TextField, TextFieldProps, styled } from "@mui/material";
-import React from "react";
 
-const StyledTextField = styled(TextField)(({ theme }) => ({
+const StyledTextField = styled(TextField)(() => ({
   borderRadius: 4,
   "& .MuiFilledInput-root": {
     backgroundColor: "#F0F0F0",
