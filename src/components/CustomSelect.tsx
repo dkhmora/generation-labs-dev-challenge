@@ -7,7 +7,7 @@ import List from "@mui/material/List";
 import CustomTextField from "./CustomTextField"; // Assuming this is your custom styled TextField
 import { CustomSelectItem } from "../types";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Box, InputAdornment, Paper } from "@mui/material";
+import { Box, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 const ITEM_HEIGHT = 48;
@@ -194,9 +194,9 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
                 backgroundColor: "#777",
               },
               borderWidth: "1px",
-              borderTopWidth: "0px",
-              borderTopRightRadius: "0px",
-              borderTopLeftRadius: "0px",
+              borderTopWidth: search ? "0px" : "1px",
+              borderTopRightRadius: search ? "0px" : "8px",
+              borderTopLeftRadius: search ? "0px" : "8px",
               borderBottomLeftRadius: "8px",
               borderBottomRightRadius: "8px",
             }}
