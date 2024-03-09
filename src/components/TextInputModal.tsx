@@ -1,12 +1,13 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { TextareaAutosize, styled } from "@mui/material";
 import { blue, grey } from "@mui/material/colors";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Textarea = styled(TextareaAutosize)(
   ({ theme }) => `
@@ -67,7 +68,21 @@ export default function TextInputModal(
         },
       }}
     >
-      <DialogTitle>Add notes</DialogTitle>
+      <DialogTitle>
+        Add notes
+        <IconButton
+          aria-label="close"
+          onClick={clickCancel}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
 
       <DialogContent>
         <Textarea
@@ -79,8 +94,18 @@ export default function TextInputModal(
       </DialogContent>
 
       <DialogActions>
-        <Button onClick={clickCancel}>Cancel</Button>
-        <Button onClick={clickSave}>Save</Button>
+        <Button
+          variant="outlined"
+          onClick={clickSave}
+          sx={{
+            borderRadius: 8,
+            borderColor: "#475352",
+            color: "#292E2E",
+            textTransform: "none",
+          }}
+        >
+          Confirm
+        </Button>
       </DialogActions>
     </Dialog>
   );
