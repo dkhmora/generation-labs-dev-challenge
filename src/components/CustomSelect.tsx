@@ -7,6 +7,8 @@ import List from "@mui/material/List";
 import CustomTextField from "./CustomTextField"; // Assuming this is your custom styled TextField
 import { CustomSelectItem } from "../types";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { InputAdornment } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -146,27 +148,38 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
         }}
       >
         {search && (
-          <div className="px-4">
+          <div className="px-2">
             <CustomTextField
               placeholder="Search..."
               value={searchTerm}
               onChange={handleSearchChange}
               fullWidth
               margin="dense"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon sx={{ color: "#BFBFBF" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
         )}
 
         <List>
           {filteredItems.map((item) => (
-            <MenuItem key={item.value} onClick={() => handleSelect(item.value)}>
+            <MenuItem
+              key={item.value}
+              onClick={() => handleSelect(item.value)}
+              sx={{ paddingLeft: 1, paddingRight: 1 }}
+            >
               <span
                 style={{
                   backgroundColor: item.color || "transparent",
                   color: item.textColor || "#1F1F1F",
                   borderRadius: "8px",
                   display: "inline-block",
-                  padding: "4px 8px 4px 8px",
+                  padding: item.color ? "4px 8px 4px 8px" : "0px 0px 0px 0px",
                   fontSize: "14px",
                 }}
               >
