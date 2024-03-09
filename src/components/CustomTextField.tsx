@@ -4,7 +4,7 @@ import React from "react";
 const StyledTextField = styled(TextField)(({ theme }) => ({
   borderRadius: 4,
   "& .MuiFilledInput-root": {
-    backgroundColor: "#F0F0F0", // Set the desired background color
+    backgroundColor: "#F0F0F0",
     borderRadius: "8px",
   },
   "& .MuiFilledInput-input": {
@@ -26,14 +26,14 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 }));
 
 export default function CustomTextField(customTextFieldProps: TextFieldProps) {
-  const { value, onChange, ...props } = customTextFieldProps;
+  const { value, onChange, placeholder, ...props } = customTextFieldProps;
 
   return (
     <StyledTextField
       variant="filled"
       value={value}
       onChange={onChange}
-      placeholder="Enter text here"
+      placeholder={placeholder}
       sx={{
         minWidth: "100px",
       }}

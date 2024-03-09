@@ -81,12 +81,12 @@ const CustomKeyboardArrowDownIcon = (props) => (
 type CustomSelectPropsType = {
   value: string;
   items: CustomSelectItem[];
-  placeHolder: string;
+  placeholder: string;
   onChange: (event: SelectChangeEvent) => void;
 };
 
 export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
-  const { value, items, placeHolder, onChange } = customSelectProps;
+  const { value, items, placeholder, onChange } = customSelectProps;
   const { color, textColor } = items.find((item) => item.value === value) || {
     color: null,
     textColor: null,
@@ -109,7 +109,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
               }}
             />
           }
-          placeholder={placeHolder}
+          placeholder={placeholder}
           MenuProps={{
             ...MenuProps,
             sx: {
@@ -141,7 +141,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
                 padding: "4px 8px 4px 8px",
               }}
             >
-              <em>{placeHolder}</em>
+              <em>{placeholder}</em>
             </span>
           </MenuItem>
 

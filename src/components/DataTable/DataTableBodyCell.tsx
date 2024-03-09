@@ -65,7 +65,7 @@ const renderField = (
       <CustomSelect
         value={row[columnKey as SelectColumnKeys]}
         items={column.items}
-        placeHolder={label}
+        placeholder={label}
         onChange={(event) => handleDataChange(event.target.value)}
       />
     );
@@ -88,6 +88,7 @@ const renderField = (
     content = (
       <CustomTextField
         value={row[columnKey as SelectColumnKeys]}
+        placeholder={label}
         onChange={(event) => handleDataChange(event.target.value)}
       />
     );
