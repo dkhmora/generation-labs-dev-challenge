@@ -5,6 +5,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { CustomSelectItem } from "../types";
 import { FilledInput } from "@mui/material";
 import styled from "@mui/material/styles/styled";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -64,14 +65,27 @@ const CustomFilledInput = styled(FilledInput)(() => ({
   },
 }));
 
-type customSelectPropsType = {
+const CustomKeyboardArrowDownIcon = (props) => (
+  <KeyboardArrowDownIcon
+    {...props}
+    sx={{
+      width: "16px",
+      height: "16px",
+      marginTop: "4px",
+      marginBottom: "4px",
+    }}
+    style={{ color: "#1F1F1F" }}
+  />
+);
+
+type CustomSelectPropsType = {
   value: string;
   items: CustomSelectItem[];
   placeHolder: string;
   onChange: (event: SelectChangeEvent) => void;
 };
 
-export default function CustomSelect(customSelectProps: customSelectPropsType) {
+export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
   const { value, items, placeHolder, onChange } = customSelectProps;
   const { color, textColor } = items.find((item) => item.value === value) || {
     color: null,
@@ -91,6 +105,7 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
               style={{
                 backgroundColor: color ? color : "",
                 color: textColor ? textColor : "#1F1F1F",
+                paddingRight: "8px",
               }}
             />
           }
@@ -115,6 +130,7 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
               borderRadius: 2,
             },
           }}
+          IconComponent={CustomKeyboardArrowDownIcon}
         >
           {items.map((item) => (
             <MenuItem key={item.value} value={item.value}>
