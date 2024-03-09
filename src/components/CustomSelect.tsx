@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Theme } from "@mui/material/styles";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -11,9 +10,31 @@ const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
   PaperProps: {
-    style: {
+    sx: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+      width: 300,
+      borderRadius: "8px",
+      mt: 0.5,
+      border: "1px solid #D9D9D9",
+      boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
+      overflowY: "auto",
+      overflowX: "hidden",
+      "&::-webkit-scrollbar": {
+        width: "8px",
+        height: "8px",
+      },
+      "&::-webkit-scrollbar-track": {
+        backgroundColor: "transparent",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        backgroundColor: "#BFBFBF",
+        borderRadius: "3.5px",
+        border: "2px solid #fff",
+        marginRight: "2px",
+      },
+      "&::-webkit-scrollbar-thumb:hover": {
+        backgroundColor: "#777",
+      },
     },
   },
   anchorOrigin: {
@@ -101,7 +122,7 @@ export default function CustomSelect(customSelectProps: customSelectPropsType) {
                 style={{
                   backgroundColor: item.color || "transparent",
                   color: item.textColor || "#1F1F1F",
-                  borderRadius: "4px",
+                  borderRadius: "8px",
                   display: "inline-block",
                   padding: "4px 8px 4px 8px",
                 }}
