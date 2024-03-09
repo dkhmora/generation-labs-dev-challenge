@@ -153,6 +153,9 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
                 fontSize: "16px",
                 color: "#fff",
                 backgroundColor: "#66430D",
+                "&:hover": {
+                  backgroundColor: "#66430D", // Adjust hover color as needed
+                },
                 paddingLeft: 8,
                 paddingRight: 8,
               }}
