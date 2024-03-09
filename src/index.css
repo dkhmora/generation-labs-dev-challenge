@@ -5,10 +5,39 @@
 :root {
   color-scheme: light dark;
   color: #2f2f2f;
-  background-color: #ffff;
+  background-color: #fafafa;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: #1f1f1f;
+  font-family: "Roboto", sans-serif;
+}
+
+.viewport {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+}
+
+.viewport.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.content {
+  transform-origin: top;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.content.open {
+  transform: scaleY(1);
+  opacity: 1;
 }
