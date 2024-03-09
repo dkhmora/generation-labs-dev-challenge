@@ -117,7 +117,7 @@ export default function DataTableBodyCell(
     <TableCell
       component="th"
       scope="row"
-      sx={{ borderBottom: "none", minWidth: 100 }}
+      sx={{ borderBottom: "none", minWidth: 100, paddingY: "4px" }}
     >
       {renderField(
         column,
