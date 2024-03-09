@@ -10,6 +10,9 @@ export const actionPlanColumns: Columns = {
   },
   intervention: {
     fieldType: "select",
+    fieldProps: {
+      search: true,
+    },
     label: "Intervention",
     items: selectItems.intervention,
     width: "20%",

@@ -34,7 +34,7 @@ const renderField = (
   setIsNotesModalOpen: (isOpen: boolean) => void,
   setNotesData: (data: any) => void
 ) => {
-  const { fieldType, label } = column;
+  const { fieldType, fieldProps, label } = column;
   const handleDataChange = (value: string) => {
     const updatedRow = { ...row, [columnKey]: value };
 
@@ -69,6 +69,7 @@ const renderField = (
         items={column.items}
         placeholder={label}
         onChange={(value) => handleDataChange(value)}
+        {...fieldProps}
       />
     );
   } else if (fieldType === "button/notes") {

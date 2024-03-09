@@ -10,8 +10,13 @@ export type SelectColumnKeys = "system" | "intervention" | "frequency";
 export type TextColumnKeys = "dosage";
 export type ColumnKeys = SelectColumnKeys | TextColumnKeys | "notes" | "delete";
 
+export type FieldProps = {
+  search?: boolean;
+};
+
 export type SelectColumn = {
   fieldType: FieldTypes;
+  fieldProps?: FieldProps;
   label: SelectColumnLabel;
   items: CustomSelectItem[];
   width: string;

@@ -43,10 +43,11 @@ type CustomSelectPropsType = {
   placeholder: string;
   onChange: (value: string) => void;
   value: string;
+  search?: boolean;
 };
 
 export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
-  const { items, placeholder, onChange, value } = customSelectProps;
+  const { items, placeholder, onChange, value, search } = customSelectProps;
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -144,15 +145,17 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
           horizontal: "left",
         }}
       >
-        <div className="px-4">
-          <CustomTextField
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={handleSearchChange}
-            fullWidth
-            margin="dense"
-          />
-        </div>
+        {search && (
+          <div className="px-4">
+            <CustomTextField
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              fullWidth
+              margin="dense"
+            />
+          </div>
+        )}
 
         <List>
           {filteredItems.map((item) => (
