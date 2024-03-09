@@ -103,15 +103,38 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
           </div>
         </div>
 
-        <div className="space-y-4">
-          {MOCK_ACTION_PLAN_SECTIONS.map((actionPlanSection, index) => (
-            <ActionPlanSection
-              key={`${actionPlanSection.title}-${index}`}
-              dataKey={actionPlanSection.dataKey}
-              title={actionPlanSection.title}
-              icon={actionPlanSection.icon}
-            />
-          ))}
+        <div className="flex flex-col space-y-4">
+          <div className="space-y-4">
+            {MOCK_ACTION_PLAN_SECTIONS.map((actionPlanSection, index) => (
+              <ActionPlanSection
+                key={`${actionPlanSection.title}-${index}`}
+                dataKey={actionPlanSection.dataKey}
+                title={actionPlanSection.title}
+                icon={actionPlanSection.icon}
+              />
+            ))}
+          </div>
+
+          <div className="w-full md:w-auto md:self-end">
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{
+                textTransform: "none",
+                borderRadius: 6,
+                fontSize: "16px",
+                color: "#fff",
+                backgroundColor: "#66430D",
+                paddingLeft: 8,
+                paddingRight: 8,
+              }}
+              onClick={() => {
+                console.log("Forgot Password Clicked");
+              }}
+            >
+              Send
+            </Button>
+          </div>
         </div>
       </div>
     </section>
