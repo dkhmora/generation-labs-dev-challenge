@@ -52,11 +52,13 @@ function ActionPlanSection({ title, icon, dataKey }: ActionPlanSectionProps) {
           className={`mt-3 content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
-          <DataTable
-            data={sectionData}
-            dataKey={dataKey}
-            columns={actionPlanColumns}
-          />
+          {sectionData.length !== 0 && (
+            <DataTable
+              data={sectionData}
+              dataKey={dataKey}
+              columns={actionPlanColumns}
+            />
+          )}
 
           <Button
             variant="text"
