@@ -36,6 +36,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
   const { items, placeholder, onChange, value, search } = customSelectProps;
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [customValue, setCustomValue] = useState("");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -43,6 +44,17 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
 
   const handleClose = () => {
     setAnchorEl(null);
+    setSearchTerm("");
+    setCustomValue("");
+  };
+
+  const handleCustomChange = (event) => {
+    setCustomValue(event.target.value);
+  };
+
+  const handleConfirmCustomValue = () => {
+    onChange(customValue);
+    handleClose();
   };
 
   const handleSearchChange = (event) => {
@@ -236,12 +248,14 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
                 mt: "4px",
                 borderRadius: "8px",
                 borderWidth: "1px",
+                display: "flex",
+                flexDirection: "row",
               }}
             >
               <CustomTextField
                 placeholder="Customized"
-                value={searchTerm}
-                onChange={handleSearchChange}
+                value={customValue}
+                onChange={handleCustomChange}
                 fullWidth
                 margin="dense"
                 InputProps={{
@@ -253,6 +267,18 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
                 }}
                 sx={{ mt: 0.5 }}
               />
+
+              <Button
+                sx={{
+                  textTransform: "none",
+                  borderRadius: 6,
+                  fontSize: "12px",
+                  color: "#905E12",
+                }}
+                onClick={handleConfirmCustomValue}
+              >
+                Confirm
+              </Button>
             </Box>
           )}
         </Box>
