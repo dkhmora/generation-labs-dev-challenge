@@ -132,18 +132,20 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
           }}
           IconComponent={CustomKeyboardArrowDownIcon}
         >
-          <MenuItem disabled value="">
-            <span
-              style={{
-                color: "#8C8C8C",
-                borderRadius: "8px",
-                display: "inline-block",
-                padding: "4px 8px 4px 8px",
-              }}
-            >
-              <em>{placeholder}</em>
-            </span>
-          </MenuItem>
+          {value === undefined && (
+            <MenuItem disabled value="">
+              <span
+                style={{
+                  color: "#8C8C8C",
+                  borderRadius: "8px",
+                  display: "inline-block",
+                  padding: "4px 8px 4px 8px",
+                }}
+              >
+                <em>{placeholder}</em>
+              </span>
+            </MenuItem>
+          )}
 
           {items.map((item) => (
             <MenuItem key={item.value} value={item.value}>
