@@ -5,6 +5,7 @@ import SpaIcon from "../../assets/spa.svg";
 import CircleImageIcon from "../CircleImageIcon";
 import ActionPlanSection from "./ActionPlanSection";
 import { Button } from "@mui/material";
+import LeftChevron from "../../assets/left_chevron.svg";
 
 const MOCK_ACTION_PLAN_SECTIONS = [
   {
@@ -35,6 +36,23 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
   return (
     <section className="w-full">
       <div className="space-y-4">
+        <Button
+          variant="text"
+          sx={{
+            fontSize: "24px",
+            fontWeight: 700,
+            textTransform: "none",
+            color: "black",
+            borderRadius: 12,
+            paddingLeft: 0,
+          }}
+        >
+          <div className="mr-3">
+            <CircleImageIcon icon={LeftChevron} className="bg-white p-3.5" />
+          </div>
+          Back
+        </Button>
+
         <div className="flex flex-row justify-between align-center items-center pr-2">
           <div className="flex flex-row justify-center align-center items-center space-x-6">
             <h2 className="text-2xl font-semibold">
