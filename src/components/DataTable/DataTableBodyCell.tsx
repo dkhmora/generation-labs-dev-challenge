@@ -7,6 +7,7 @@ import {
   Row,
   SelectColumn,
   SelectColumnKeys,
+  TextColumn,
 } from "../../types";
 import AddNoteImage from "../../assets/note_add.svg";
 import DeleteImage from "../../assets/delete.svg";
@@ -16,12 +17,12 @@ import CustomTextField from "../CustomTextField";
 
 type DataTableBodyCellProps = {
   row: Row;
-  column: SelectColumn | ButtonColumn;
+  column: SelectColumn | ButtonColumn | TextColumn;
   columnKey: ColumnKeys | "id";
 };
 
 const renderField = (
-  column: SelectColumn | ButtonColumn | SelectColumn,
+  column: SelectColumn | ButtonColumn | TextColumn,
   columnKey: ColumnKeys,
   row: Row
 ) => {

@@ -2,15 +2,16 @@ import React, { useState, useRef, useEffect } from "react";
 import ActionPlanSectionHeader from "./ActionPlanSectionHeader";
 import BoxContainer from "../BoxContainer";
 import DataTable from "../DataTable";
-import { Columns, Row } from "../../types";
-import { selectItems } from "../../constants";
+import { Row } from "../../types";
+import { columns } from "../../constants/mockData";
 
 type ActionPlanSectionProps = {
   title: string;
   icon: JSX.Element;
+  data: Row[];
 };
 
-function ActionPlanSection({ title, icon }: ActionPlanSectionProps) {
+function ActionPlanSection({ title, icon, data }: ActionPlanSectionProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -21,36 +22,6 @@ function ActionPlanSection({ title, icon }: ActionPlanSectionProps) {
       setIsDropdownOpen(true);
     }, 500);
   }, []);
-
-  // Sample rows data
-  const rows: Row[] = [
-    {
-      id: 1,
-      system: "Respiratory system",
-      intervention: "Q10",
-      dosage: "500mg",
-      frequency: "Everyday",
-      notes: true,
-      delete: true,
-    },
-  ];
-
-  const columns: Columns = {
-    system: { fieldType: "select", label: "System", items: selectItems.system },
-    intervention: {
-      fieldType: "select",
-      label: "Intervention",
-      items: selectItems.intervention,
-    },
-    dosage: { fieldType: "text", label: "Dosage" },
-    frequency: {
-      fieldType: "select",
-      label: "Frequency",
-      items: selectItems.frequency,
-    },
-    notes: { fieldType: "button/notes", label: "Notes" },
-    delete: { fieldType: "button/delete", label: "" },
-  };
 
   return (
     <BoxContainer className="p-6">
@@ -66,7 +37,7 @@ function ActionPlanSection({ title, icon }: ActionPlanSectionProps) {
           className={`mt-3 content ${isDropdownOpen ? "open" : ""}`}
           ref={contentRef}
         >
-          <DataTable data={rows} columns={columns} />
+          <DataTable data={data} columns={columns} />
         </div>
       </div>
     </BoxContainer>

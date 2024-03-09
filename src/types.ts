@@ -55,3 +55,10 @@ export type ColumnSelectItems = {
   intervention: CustomSelectItem[];
   frequency: CustomSelectItem[];
 };
+
+export type ActionPlanData = {
+  nutritionAndSupplementIntervention: Row[];
+  medicationIntervention: Row[];
+  fitness: Row[];
+  therapyIntervention: Row[];
+};
