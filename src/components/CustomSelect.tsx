@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
 import CustomTextField from "./CustomTextField"; // Assuming this is your custom styled TextField
 import { CustomSelectItem } from "../types";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -83,7 +84,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
         variant="outlined"
         onClick={handleClick}
         sx={{
-          display: "block", // Ensure the button is a block element to fill the container
+          display: "block",
           backgroundColor: color ? color : "#F0F0F0",
           color: textColor ? textColor : !value ? "#8C8C8C" : "#1F1F1F",
           textTransform: "none",
@@ -96,8 +97,8 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
           borderColor: "transparent",
           fontSize: "14px",
           fontWeight: 400,
-          paddingLeft: "6px",
-          paddingRight: "6px",
+          paddingLeft: "8px",
+          paddingRight: "8px",
           paddingBottom: "3.25px",
           paddingTop: "3.25px",
           borderWidth: "0px",
@@ -117,6 +118,17 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
         }}
       >
         {value ? value : placeholder}
+        <KeyboardArrowDownIcon
+          sx={{
+            width: "16px",
+            height: "16px",
+            marginTop: "4px",
+            marginBottom: "4px",
+            marginLeft: "8px",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
+          style={{ color: "#1F1F1F" }}
+        />
       </Button>
       <CustomPopover
         id={id}

@@ -31,7 +31,7 @@ export default function CustomTextField(customTextFieldProps: TextFieldProps) {
   return (
     <StyledTextField
       variant="filled"
-      value={value}
+      value={value || ""}
       onChange={onChange}
       placeholder={placeholder}
       sx={{
