@@ -36,65 +36,71 @@ export default function ActionPlan(actionPlanProps: { userName: string }) {
   return (
     <section className="w-full">
       <div className="space-y-4">
-        <Button
-          variant="text"
-          sx={{
-            fontSize: "24px",
-            fontWeight: 700,
-            textTransform: "none",
-            color: "black",
-            borderRadius: 12,
-            paddingLeft: 0,
-          }}
-        >
-          <div className="mr-3">
-            <CircleImageIcon icon={LeftChevron} className="bg-white p-3.5" />
-          </div>
-          Back
-        </Button>
-
-        <div className="flex flex-row justify-between align-center items-center pr-2">
-          <div className="flex flex-row justify-center align-center items-center space-x-6">
-            <h2 className="text-2xl font-semibold">
-              Action plan for {userName}
-            </h2>
-
-            <Button
-              sx={{
-                textDecoration: "underline",
-                ":hover": {
-                  textDecoration: "none",
-                },
-                textTransform: "none",
-                borderRadius: 6,
-                fontSize: "16px",
-                color: "#66430D",
-              }}
-              onClick={() => {
-                console.log("Forgot Password Clicked");
-              }}
-            >
-              Duplicate last action plan
-            </Button>
-          </div>
-
+        <div>
           <Button
+            variant="text"
             sx={{
-              textDecoration: "underline",
-              ":hover": {
-                textDecoration: "none",
-              },
+              fontSize: "24px",
+              fontWeight: 700,
               textTransform: "none",
-              borderRadius: 6,
-              fontSize: "16px",
-              color: "#66430D",
-            }}
-            onClick={() => {
-              console.log("Forgot Password Clicked");
+              color: "black",
+              borderRadius: 12,
+              paddingLeft: 0,
             }}
           >
-            Latest report
+            <div className="mr-3">
+              <CircleImageIcon icon={LeftChevron} className="bg-white p-3.5" />
+            </div>
+            Back
           </Button>
+
+          <div className="flex flex-col justify-between align-left items-left pr-2 md:flex-row md:align-center md:items-center">
+            <div className="flex flex-col justify-left align-left items-left md:space-x-6 md:flex-row md:justify-center md:items-center md:align-center">
+              <h2 className="text-2xl font-semibold">
+                Action plan for {userName}
+              </h2>
+
+              <div className="w-auto">
+                <Button
+                  sx={{
+                    textDecoration: "underline",
+                    ":hover": {
+                      textDecoration: "none",
+                    },
+                    textTransform: "none",
+                    borderRadius: 6,
+                    fontSize: "16px",
+                    color: "#66430D",
+                  }}
+                  onClick={() => {
+                    console.log("Forgot Password Clicked");
+                  }}
+                >
+                  Duplicate last action plan
+                </Button>
+              </div>
+            </div>
+
+            <div className="w-auto">
+              <Button
+                sx={{
+                  textDecoration: "underline",
+                  ":hover": {
+                    textDecoration: "none",
+                  },
+                  textTransform: "none",
+                  borderRadius: 6,
+                  fontSize: "16px",
+                  color: "#66430D",
+                }}
+                onClick={() => {
+                  console.log("Forgot Password Clicked");
+                }}
+              >
+                Latest report
+              </Button>
+            </div>
+          </div>
         </div>
 
         <div className="space-y-4">
