@@ -1,4 +1,4 @@
-import { Box, IconButton, TableCell, TextField } from "@mui/material";
+import { Box, TableCell } from "@mui/material";
 import React, { useContext } from "react";
 import CustomSelect from "../CustomSelect";
 import {
@@ -10,6 +10,7 @@ import {
   TextColumn,
 } from "../../types";
 import AddNoteImage from "../../assets/note_add.svg";
+import EditNoteImage from "../../assets/note_edit.svg";
 import DeleteImage from "../../assets/delete.svg";
 import DeleteImageHover from "../../assets/delete_hover.svg";
 import CustomIconButton from "../CustomIconButton";
@@ -75,7 +76,13 @@ const renderField = (
   } else if (fieldType === "button/notes") {
     content = (
       <CustomIconButton
-        icon={<img src={AddNoteImage} alt="Add Note" />}
+        icon={
+          row.notes ? (
+            <img src={EditNoteImage} alt="Edit Note" />
+          ) : (
+            <img src={AddNoteImage} alt="Add Note" />
+          )
+        }
         onClick={() => {
           setNotesData({ notesText: row.notes, rowIndex, dataKey });
           setIsNotesModalOpen(true);
