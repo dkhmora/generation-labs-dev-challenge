@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CustomSelectItem } from "../../types";
 import SelectButton from "./SelectButton";
 import SelectMenu from "./SelectMenu";
@@ -29,11 +29,28 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
   const [searchTerm, setSearchTerm] = useState("");
   const [customValue, setCustomValue] = useState("");
 
+  const resetFieldsTimeoutRef = useRef<number | null>(null);
+
   const handleClose = () => {
     setAnchorEl(null);
-    setSearchTerm("");
-    setCustomValue("");
+
+    if (resetFieldsTimeoutRef.current) {
+      clearTimeout(resetFieldsTimeoutRef.current);
+    }
+
+    resetFieldsTimeoutRef.current = setTimeout(() => {
+      setSearchTerm("");
+      setCustomValue("");
+    }, 300);
   };
+
+  useEffect(() => {
+    return () => {
+      if (resetFieldsTimeoutRef.current) {
+        clearTimeout(resetFieldsTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
