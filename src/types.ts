@@ -10,6 +10,7 @@ export type ColumnKeys = SelectColumnKeys | TextColumnKeys | "notes" | "delete";
 
 export type FieldProps = {
   search?: boolean;
+  customize?: boolean;
 };
 
 export type SelectColumn = {

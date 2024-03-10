@@ -18,6 +18,24 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+/* Scroll bar stylings */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bfbfbf;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777777;
+}
+
 .viewport {
   overflow: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease;
@@ -26,7 +44,7 @@ body {
 }
 
 .viewport.open {
-  max-height: 500px;
+  max-height: 550px;
   opacity: 1;
 }
 

@@ -18,7 +18,6 @@ export default function DataTableHead(
             key={key}
             sx={{
               borderBottom: "none",
-              paddingBottom: 0,
               width,
             }}
           >
