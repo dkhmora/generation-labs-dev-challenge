@@ -33,6 +33,7 @@ type SelectMenuPropsType = {
   filteredItems: CustomSelectItem[];
   handleSelect: (value: string) => void;
   search?: boolean;
+  customize?: boolean;
 };
 
 export default function SelectMenu(selectMenuProps: SelectMenuPropsType) {
@@ -49,6 +50,7 @@ export default function SelectMenu(selectMenuProps: SelectMenuPropsType) {
     filteredItems,
     handleSelect,
     search,
+    customize,
   } = selectMenuProps;
   return (
     <CustomPopover
@@ -112,7 +114,7 @@ export default function SelectMenu(selectMenuProps: SelectMenuPropsType) {
           <SelectItemsList items={filteredItems} onSelect={handleSelect} />
         </Box>
 
-        {search && (
+        {customize && (
           <CustomizeTextField
             value={customValue}
             onChange={handleCustomChange}

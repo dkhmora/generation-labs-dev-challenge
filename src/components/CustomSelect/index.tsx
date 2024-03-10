@@ -10,11 +10,19 @@ type CustomSelectPropsType = {
   value: string;
   search?: boolean;
   tooltipText: string;
+  customize?: boolean;
 };
 
 export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
-  const { items, placeholder, onChange, value, search, tooltipText } =
-    customSelectProps;
+  const {
+    items,
+    placeholder,
+    onChange,
+    value,
+    search,
+    tooltipText,
+    customize,
+  } = customSelectProps;
   const [anchorEl, setAnchorEl] = useState<
     (EventTarget & HTMLButtonElement) | null
   >(null);
@@ -80,6 +88,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
         filteredItems={filteredItems}
         handleSelect={handleSelect}
         search={search}
+        customize={customize}
       />
     </>
   );

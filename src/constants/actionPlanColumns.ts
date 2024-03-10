@@ -12,6 +12,7 @@ export const actionPlanColumns: Columns = {
     fieldType: "select",
     fieldProps: {
       search: true,
+      customize: true,
     },
     label: "Intervention",
     items: selectItems.intervention,
