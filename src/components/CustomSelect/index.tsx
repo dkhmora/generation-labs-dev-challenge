@@ -4,12 +4,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Popover from "@mui/material/Popover";
 import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
-import CustomTextField from "./CustomTextField"; // Assuming this is your custom styled TextField
-import { CustomSelectItem } from "../types";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import CustomTextField from "../CustomTextField"; // Assuming this is your custom styled TextField
+import { CustomSelectItem } from "../../types";
 import { Box, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import CustomTooltip from "./CustomTooltip";
+import SelectButton from "./SelectButton";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -72,8 +71,8 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
   };
 
   const { color, textColor } = items.find((item) => item.value === value) || {
-    color: null,
-    textColor: null,
+    color: undefined,
+    textColor: undefined,
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -83,59 +82,15 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
 
   return (
     <div>
-      <CustomTooltip title={tooltipText}>
-        <Button
-          aria-describedby={id}
-          variant="outlined"
-          onClick={handleClick}
-          sx={{
-            display: "block",
-            backgroundColor: color ? color : "#F0F0F0",
-            color: textColor ? textColor : !value ? "#8C8C8C" : "#1F1F1F",
-            textTransform: "none",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-            textAlign: "left",
-            justifyContent: "start",
-            borderRadius: "8px",
-            borderColor: "transparent",
-            fontSize: "14px",
-            fontWeight: 400,
-            paddingLeft: "8px",
-            paddingRight: "8px",
-            paddingBottom: "3.25px",
-            paddingTop: "3.25px",
-            borderWidth: "0px",
-            maxWidth: "250px",
-            "&:hover": {
-              backgroundColor: color ? color : "#F0F0F0",
-              borderWidth: "0px",
-            },
-            "&:active": {
-              backgroundColor: color ? color : "#F0F0F0",
-              borderWidth: "0px",
-            },
-            "&:focus": {
-              backgroundColor: color ? color : "#F0F0F0",
-              borderWidth: "0px",
-            },
-          }}
-        >
-          {value ? value : placeholder}
-          <KeyboardArrowDownIcon
-            sx={{
-              width: "16px",
-              height: "16px",
-              marginTop: "4px",
-              marginBottom: "4px",
-              marginLeft: "8px",
-              transform: open ? "rotate(180deg)" : "rotate(0deg)",
-            }}
-            style={{ color: "#1F1F1F" }}
-          />
-        </Button>
-      </CustomTooltip>
+      <SelectButton
+        open={open}
+        placeholder={placeholder}
+        value={value}
+        onClick={handleClick}
+        color={color}
+        textColor={textColor}
+        tooltipText={tooltipText}
+      />
 
       <CustomPopover
         id={id}

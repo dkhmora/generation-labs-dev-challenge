@@ -17,7 +17,6 @@ import CustomIconButton from "../CustomIconButton";
 import CustomTextField from "../CustomTextField";
 import { ActionPlanDataContext } from "../ActionPlanDataContext";
 import { mockTooltipText } from "../../constants";
-import CustomTooltip from "../CustomTooltip";
 
 type DataTableBodyCellProps = {
   row: Row;
