@@ -10,7 +10,7 @@ type CustomIconButtonProps = {
 export default function CustomIconButton(
   customIconButtonProps: CustomIconButtonProps
 ) {
-  const { icon, hoverIcon, onClick } = customIconButtonProps;
+  const { icon, hoverIcon, onClick, ...props } = customIconButtonProps;
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -19,6 +19,7 @@ export default function CustomIconButton(
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
+      {...props}
     >
       {isHovered && hoverIcon ? hoverIcon : icon}
     </IconButton>

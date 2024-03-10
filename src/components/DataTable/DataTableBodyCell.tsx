@@ -17,6 +17,7 @@ import CustomIconButton from "../CustomIconButton";
 import CustomTextField from "../CustomTextField";
 import { ActionPlanDataContext } from "../ActionPlanDataContext";
 import { mockTooltipText } from "../../constants";
+import CustomTooltip from "../CustomTooltip";
 
 type DataTableBodyCellProps = {
   row: Row;
@@ -77,19 +78,21 @@ const renderField = (
     );
   } else if (fieldType === "button/notes") {
     content = (
-      <CustomIconButton
-        icon={
-          row.notes ? (
-            <img src={EditNoteImage} alt="Edit Note" />
-          ) : (
-            <img src={AddNoteImage} alt="Add Note" />
-          )
-        }
-        onClick={() => {
-          setNotesData({ notesText: row.notes, rowIndex, dataKey });
-          setIsNotesModalOpen(true);
-        }}
-      />
+      <CustomTooltip title={row.notes}>
+        <CustomIconButton
+          icon={
+            row.notes ? (
+              <img src={EditNoteImage} alt="Edit Note" />
+            ) : (
+              <img src={AddNoteImage} alt="Add Note" />
+            )
+          }
+          onClick={() => {
+            setNotesData({ notesText: row.notes, rowIndex, dataKey });
+            setIsNotesModalOpen(true);
+          }}
+        />
+      </CustomTooltip>
     );
   } else if (fieldType === "button/delete") {
     content = (
