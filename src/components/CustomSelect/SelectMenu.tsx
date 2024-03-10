@@ -1,12 +1,10 @@
-import Button from "@mui/material/Button";
 import Popover from "@mui/material/Popover";
 import { styled } from "@mui/material/styles";
-import CustomTextField from "../CustomTextField";
-import { Box, InputAdornment } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { Box } from "@mui/material";
 import SearchField from "./SearchField";
 import SelectItemsList from "./SelectItemsList";
 import { CustomSelectItem } from "../../types";
+import CustomizeTextField from "./CustomizeTextField";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -115,46 +113,11 @@ export default function SelectMenu(selectMenuProps: SelectMenuPropsType) {
         </Box>
 
         {search && (
-          <Box
-            sx={{
-              px: 1,
-              py: 1,
-              backgroundColor: "background.paper",
-              mt: "4px",
-              borderRadius: "8px",
-              borderWidth: "1px",
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <CustomTextField
-              placeholder="Customized"
-              value={customValue}
-              onChange={handleCustomChange}
-              fullWidth
-              margin="dense"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon sx={{ color: "#BFBFBF" }} />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{ mt: 0.5 }}
-            />
-
-            <Button
-              sx={{
-                textTransform: "none",
-                borderRadius: 6,
-                fontSize: "12px",
-                color: "#905E12",
-              }}
-              onClick={handleConfirmCustomValue}
-            >
-              Confirm
-            </Button>
-          </Box>
+          <CustomizeTextField
+            value={customValue}
+            onChange={handleCustomChange}
+            onClickConfirm={handleConfirmCustomValue}
+          />
         )}
       </Box>
     </CustomPopover>
