@@ -15,8 +15,8 @@ const ITEM_PADDING_TOP = 8;
 
 const CustomPopover = styled(Popover)(() => ({
   ".MuiPaper-root": {
-    width: 300,
     marginTop: "4px",
+    minWidth: "150px",
     borderRadius: "8px",
     boxShadow: "none",
     overflowY: "auto",
@@ -150,7 +150,8 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
           sx={{
             display: "flex",
             flexDirection: "column",
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            maxHeight: ITEM_HEIGHT * 8 + ITEM_PADDING_TOP,
+            height: "auto",
             borderWidth: "0px",
             borderRadius: "8px",
           }}
