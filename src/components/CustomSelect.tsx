@@ -7,14 +7,9 @@ import List from "@mui/material/List";
 import CustomTextField from "./CustomTextField"; // Assuming this is your custom styled TextField
 import { CustomSelectItem } from "../types";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {
-  Box,
-  InputAdornment,
-  Tooltip,
-  TooltipProps,
-  tooltipClasses,
-} from "@mui/material";
+import { Box, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import CustomTooltip from "./CustomTooltip";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -27,22 +22,6 @@ const CustomPopover = styled(Popover)(() => ({
     boxShadow: "none",
     overflowY: "auto",
     backgroundColor: "transparent",
-  },
-}));
-
-const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: theme.palette.common.white,
-    color: "#1F1F1F",
-    boxShadow: theme.shadows[1],
-    fontSize: 12,
-    fontWeight: 400,
-    lineHeight: "18px",
-    borderRadius: "20px",
-    border: "1px solid #F0F0F0",
-    padding: "16px",
   },
 }));
 
@@ -104,22 +83,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
 
   return (
     <div>
-      <LightTooltip
-        title={tooltipText}
-        placement="bottom-start"
-        slotProps={{
-          popper: {
-            modifiers: [
-              {
-                name: "offset",
-                options: {
-                  offset: [0, -10],
-                },
-              },
-            ],
-          },
-        }}
-      >
+      <CustomTooltip title={tooltipText}>
         <Button
           aria-describedby={id}
           variant="outlined"
@@ -171,7 +135,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
             style={{ color: "#1F1F1F" }}
           />
         </Button>
-      </LightTooltip>
+      </CustomTooltip>
 
       <CustomPopover
         id={id}
