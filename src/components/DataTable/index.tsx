@@ -15,10 +15,15 @@ export default function DataTable(dataTableProps: DataTableProps) {
   const { data, columns, dataKey } = dataTableProps;
 
   return (
-    <TableContainer component={Paper} elevation={0}>
+    <TableContainer component={Paper} elevation={0} style={{ maxHeight: 500 }}>
       <Table
-        sx={{ minWidth: 700, width: "100%", tableLayout: "auto" }}
+        sx={{
+          minWidth: 700,
+          width: "100%",
+          tableLayout: "auto",
+        }}
         aria-label="customized table"
+        stickyHeader
       >
         <DataTableHead columns={columns} />
 
