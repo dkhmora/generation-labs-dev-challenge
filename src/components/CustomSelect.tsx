@@ -7,7 +7,13 @@ import List from "@mui/material/List";
 import CustomTextField from "./CustomTextField"; // Assuming this is your custom styled TextField
 import { CustomSelectItem } from "../types";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Box, InputAdornment } from "@mui/material";
+import {
+  Box,
+  InputAdornment,
+  Tooltip,
+  TooltipProps,
+  tooltipClasses,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 const ITEM_HEIGHT = 48;
@@ -24,16 +30,34 @@ const CustomPopover = styled(Popover)(() => ({
   },
 }));
 
+const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.common.white,
+    color: "#1F1F1F",
+    boxShadow: theme.shadows[1],
+    fontSize: 12,
+    fontWeight: 400,
+    lineHeight: "18px",
+    borderRadius: "20px",
+    border: "1px solid #F0F0F0",
+    padding: "16px",
+  },
+}));
+
 type CustomSelectPropsType = {
   items: CustomSelectItem[];
   placeholder: string;
   onChange: (value: string) => void;
   value: string;
   search?: boolean;
+  tooltipText: string;
 };
 
 export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
-  const { items, placeholder, onChange, value, search } = customSelectProps;
+  const { items, placeholder, onChange, value, search, tooltipText } =
+    customSelectProps;
   const [anchorEl, setAnchorEl] = useState<
     (EventTarget & HTMLButtonElement) | null
   >(null);
@@ -80,57 +104,75 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
 
   return (
     <div>
-      <Button
-        aria-describedby={id}
-        variant="outlined"
-        onClick={handleClick}
-        sx={{
-          display: "block",
-          backgroundColor: color ? color : "#F0F0F0",
-          color: textColor ? textColor : !value ? "#8C8C8C" : "#1F1F1F",
-          textTransform: "none",
-          overflow: "hidden",
-          whiteSpace: "nowrap",
-          textOverflow: "ellipsis",
-          textAlign: "left",
-          justifyContent: "start",
-          borderRadius: "8px",
-          borderColor: "transparent",
-          fontSize: "14px",
-          fontWeight: 400,
-          paddingLeft: "8px",
-          paddingRight: "8px",
-          paddingBottom: "3.25px",
-          paddingTop: "3.25px",
-          borderWidth: "0px",
-          maxWidth: "250px",
-          "&:hover": {
-            backgroundColor: color ? color : "#F0F0F0",
-            borderWidth: "0px",
-          },
-          "&:active": {
-            backgroundColor: color ? color : "#F0F0F0",
-            borderWidth: "0px",
-          },
-          "&:focus": {
-            backgroundColor: color ? color : "#F0F0F0",
-            borderWidth: "0px",
+      <LightTooltip
+        title={tooltipText}
+        placement="bottom-start"
+        slotProps={{
+          popper: {
+            modifiers: [
+              {
+                name: "offset",
+                options: {
+                  offset: [0, -10],
+                },
+              },
+            ],
           },
         }}
       >
-        {value ? value : placeholder}
-        <KeyboardArrowDownIcon
+        <Button
+          aria-describedby={id}
+          variant="outlined"
+          onClick={handleClick}
           sx={{
-            width: "16px",
-            height: "16px",
-            marginTop: "4px",
-            marginBottom: "4px",
-            marginLeft: "8px",
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            display: "block",
+            backgroundColor: color ? color : "#F0F0F0",
+            color: textColor ? textColor : !value ? "#8C8C8C" : "#1F1F1F",
+            textTransform: "none",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+            textAlign: "left",
+            justifyContent: "start",
+            borderRadius: "8px",
+            borderColor: "transparent",
+            fontSize: "14px",
+            fontWeight: 400,
+            paddingLeft: "8px",
+            paddingRight: "8px",
+            paddingBottom: "3.25px",
+            paddingTop: "3.25px",
+            borderWidth: "0px",
+            maxWidth: "250px",
+            "&:hover": {
+              backgroundColor: color ? color : "#F0F0F0",
+              borderWidth: "0px",
+            },
+            "&:active": {
+              backgroundColor: color ? color : "#F0F0F0",
+              borderWidth: "0px",
+            },
+            "&:focus": {
+              backgroundColor: color ? color : "#F0F0F0",
+              borderWidth: "0px",
+            },
           }}
-          style={{ color: "#1F1F1F" }}
-        />
-      </Button>
+        >
+          {value ? value : placeholder}
+          <KeyboardArrowDownIcon
+            sx={{
+              width: "16px",
+              height: "16px",
+              marginTop: "4px",
+              marginBottom: "4px",
+              marginLeft: "8px",
+              transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            }}
+            style={{ color: "#1F1F1F" }}
+          />
+        </Button>
+      </LightTooltip>
+
       <CustomPopover
         id={id}
         open={open}

@@ -16,6 +16,7 @@ import DeleteImageHover from "../../assets/delete_hover.svg";
 import CustomIconButton from "../CustomIconButton";
 import CustomTextField from "../CustomTextField";
 import { ActionPlanDataContext } from "../ActionPlanDataContext";
+import { mockTooltipText } from "../../constants";
 
 type DataTableBodyCellProps = {
   row: Row;
@@ -69,6 +70,7 @@ const renderField = (
         value={row[columnKey as SelectColumnKeys]}
         items={column.items}
         placeholder={label}
+        tooltipText={mockTooltipText}
         onChange={(value) => handleDataChange(value)}
         {...column.fieldProps}
       />
