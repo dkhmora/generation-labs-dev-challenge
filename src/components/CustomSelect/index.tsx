@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
 import Popover from "@mui/material/Popover";
 import { styled } from "@mui/material/styles";
-import List from "@mui/material/List";
 import CustomTextField from "../CustomTextField"; // Assuming this is your custom styled TextField
 import { CustomSelectItem } from "../../types";
 import { Box, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SelectButton from "./SelectButton";
 import SearchField from "./SearchField";
+import SelectItemsList from "./SelectItemsList";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -150,30 +149,7 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
               borderBottomRightRadius: "8px",
             }}
           >
-            <List>
-              {filteredItems.map((item) => (
-                <MenuItem
-                  key={item.value}
-                  onClick={() => handleSelect(item.value)}
-                  sx={{ paddingLeft: 1, paddingRight: 1 }}
-                >
-                  <span
-                    style={{
-                      backgroundColor: item.color || "transparent",
-                      color: item.textColor || "#1F1F1F",
-                      borderRadius: "8px",
-                      display: "inline-block",
-                      padding: item.color
-                        ? "4px 8px 4px 8px"
-                        : "0px 0px 0px 0px",
-                      fontSize: "14px",
-                    }}
-                  >
-                    {item.value}
-                  </span>
-                </MenuItem>
-              ))}
-            </List>
+            <SelectItemsList items={filteredItems} onSelect={handleSelect} />
           </Box>
 
           {search && (
