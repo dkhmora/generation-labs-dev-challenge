@@ -9,6 +9,7 @@ import { CustomSelectItem } from "../../types";
 import { Box, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SelectButton from "./SelectButton";
+import SearchField from "./SearchField";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -59,10 +60,6 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
 
   const handleCustomChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCustomValue(event.target.value);
-  };
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
   };
 
   const handleSelect = (value: string) => {
@@ -118,34 +115,10 @@ export default function CustomSelect(customSelectProps: CustomSelectPropsType) {
           }}
         >
           {search && (
-            <Box
-              sx={{
-                pt: 1,
-                px: 1,
-                backgroundColor: "background.paper",
-                borderTopRightRadius: "8px",
-                borderTopLeftRadius: "8px",
-                borderLeftWidth: "1px",
-                borderRightWidth: "1px",
-                borderTopWidth: "1px",
-              }}
-            >
-              <CustomTextField
-                placeholder="Search..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-                fullWidth
-                margin="dense"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <SearchIcon sx={{ color: "#BFBFBF" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{ mt: 0.5 }}
-              />
-            </Box>
+            <SearchField
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
           )}
 
           <Box
