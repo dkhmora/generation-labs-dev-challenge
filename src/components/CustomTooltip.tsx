@@ -1,18 +1,21 @@
-import { Tooltip, TooltipProps, styled, tooltipClasses } from "@mui/material";
+import React from "react";
+import Tooltip, { tooltipClasses, TooltipProps } from "@mui/material/Tooltip";
+import { styled } from "@mui/material/styles";
+
 interface CustomTooltipProps extends TooltipProps {
   backgroundColor?: string;
 }
 
-const LightTooltip = styled(({ className, ...props }: CustomTooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme, backgroundColor }) => ({
+const LightTooltip = styled(
+  ({ className, backgroundColor, ...props }: CustomTooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  )
+)(({ theme, backgroundColor }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: backgroundColor
-      ? backgroundColor
-      : theme.palette.common.white,
+    backgroundColor: backgroundColor || theme.palette.common.white,
     color: "#1F1F1F",
     boxShadow: theme.shadows[1],
-    fontSize: 12,
+    fontSize: "12px",
     fontWeight: 400,
     lineHeight: "18px",
     borderRadius: "20px",
@@ -21,12 +24,13 @@ const LightTooltip = styled(({ className, ...props }: CustomTooltipProps) => (
   },
 }));
 
-export default function CustomTooltip(customTooltipProps: CustomTooltipProps) {
-  const { children, ...props } = customTooltipProps;
-
+const CustomTooltip: React.FC<CustomTooltipProps> = ({
+  children,
+  ...props
+}) => {
   return (
     <LightTooltip
-      placement="bottom-start"
+      {...props}
       PopperProps={{
         modifiers: [
           {
@@ -37,9 +41,10 @@ export default function CustomTooltip(customTooltipProps: CustomTooltipProps) {
           },
         ],
       }}
-      {...props}
     >
       {children}
     </LightTooltip>
   );
-}
+};
+
+export default CustomTooltip;
