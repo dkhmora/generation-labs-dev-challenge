@@ -78,21 +78,24 @@ const renderField = (
     );
   } else if (fieldType === "button/notes") {
     content = (
-      <CustomTooltip title={row.notes}>
-        <CustomIconButton
-          icon={
-            row.notes ? (
-              <img src={EditNoteImage} alt="Edit Note" />
-            ) : (
-              <img src={AddNoteImage} alt="Add Note" />
-            )
-          }
-          onClick={() => {
-            setNotesData({ notesText: row.notes, rowIndex, dataKey });
-            setIsNotesModalOpen(true);
-          }}
-        />
-      </CustomTooltip>
+      <CustomIconButton
+        icon={
+          row.notes ? (
+            <img src={EditNoteImage} alt="Edit Note" />
+          ) : (
+            <img src={AddNoteImage} alt="Add Note" />
+          )
+        }
+        tooltipProps={
+          row.notes
+            ? { title: row.notes, backgroundColor: "#FAEECA" }
+            : undefined
+        }
+        onClick={() => {
+          setNotesData({ notesText: row.notes, rowIndex, dataKey });
+          setIsNotesModalOpen(true);
+        }}
+      />
     );
   } else if (fieldType === "button/delete") {
     content = (

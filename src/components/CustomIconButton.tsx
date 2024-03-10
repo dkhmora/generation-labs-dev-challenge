@@ -1,19 +1,27 @@
 import { ReactNode, useState } from "react";
 import IconButton from "@mui/material/IconButton";
+import CustomTooltip from "./CustomTooltip";
+
+type TooltipProps = {
+  title: string;
+  backgroundColor?: string;
+};
 
 type CustomIconButtonProps = {
   icon: ReactNode;
   hoverIcon?: ReactNode;
+  tooltipProps?: TooltipProps;
   onClick: () => void;
 };
 
 export default function CustomIconButton(
   customIconButtonProps: CustomIconButtonProps
 ) {
-  const { icon, hoverIcon, onClick, ...props } = customIconButtonProps;
+  const { icon, hoverIcon, tooltipProps, onClick, ...props } =
+    customIconButtonProps;
   const [isHovered, setIsHovered] = useState(false);
 
-  return (
+  const IconButtonComponent = (
     <IconButton
       aria-label="icon-button"
       onMouseEnter={() => setIsHovered(true)}
@@ -23,5 +31,11 @@ export default function CustomIconButton(
     >
       {isHovered && hoverIcon ? hoverIcon : icon}
     </IconButton>
+  );
+
+  return tooltipProps ? (
+    <CustomTooltip {...tooltipProps}>{IconButtonComponent}</CustomTooltip>
+  ) : (
+    IconButtonComponent
   );
 }

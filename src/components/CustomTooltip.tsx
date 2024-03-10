@@ -27,17 +27,15 @@ export default function CustomTooltip(customTooltipProps: CustomTooltipProps) {
   return (
     <LightTooltip
       placement="bottom-start"
-      slotProps={{
-        popper: {
-          modifiers: [
-            {
-              name: "offset",
-              options: {
-                offset: [0, -10],
-              },
+      PopperProps={{
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, -10],
             },
-          ],
-        },
+          },
+        ],
       }}
       {...props}
     >
