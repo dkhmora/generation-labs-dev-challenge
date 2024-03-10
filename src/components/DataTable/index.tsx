@@ -15,7 +15,28 @@ export default function DataTable(dataTableProps: DataTableProps) {
   const { data, columns, dataKey } = dataTableProps;
 
   return (
-    <TableContainer component={Paper} elevation={0} style={{ maxHeight: 500 }}>
+    <TableContainer
+      component={Paper}
+      elevation={0}
+      style={{ maxHeight: 500 }}
+      sx={{
+        "&::-webkit-scrollbar": {
+          width: "8px",
+          height: "8px",
+        },
+        "&::-webkit-scrollbar-track": {
+          backgroundColor: "transparent",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          backgroundColor: "#BFBFBF",
+          borderRadius: "3.5px",
+          border: "2px solid #fff",
+        },
+        "&::-webkit-scrollbar-thumb:hover": {
+          backgroundColor: "#777",
+        },
+      }}
+    >
       <Table
         sx={{
           minWidth: 700,
