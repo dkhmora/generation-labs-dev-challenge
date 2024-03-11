@@ -4,7 +4,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { TextareaAutosize, styled } from "@mui/material";
-import { blue, grey } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -26,14 +26,13 @@ const Textarea = styled(TextareaAutosize)(
   };
 
   &:hover {
-    border-color: ${blue[400]};
+    border-color: #66430D;
   }
 
   &:focus {
-    border-color: ${blue[400]};
-    box-shadow: 0 0 0 3px ${
-      theme.palette.mode === "dark" ? blue[600] : blue[200]
-    };
+    border-color: #66430D;
+    border-width: 2px;
+    padding: 7px 11px;
   }
 
   // firefox
@@ -100,6 +99,10 @@ export default function TextInputModal(
             borderRadius: 8,
             borderColor: "#475352",
             color: "#292E2E",
+            "&:hover": {
+              borderColor: "#66430D",
+              color: "#66430D",
+            },
             textTransform: "none",
           }}
         >
